@@ -1,5 +1,5 @@
 {
-  "name": "Kargomcom DevEnv",
+  "name": "Lumos DevEnv",
   "dockerFile": "Dockerfile",
   "runArgs": [
     "-v",
@@ -21,6 +21,6 @@
     "editorconfig.editorconfig",
     "ms-dotnettools.csharp",
     "ms-vsliveshare.vsliveshare-pack",
-    "gruntfuggly.todo-tree",
+    "gruntfuggly.todo-tree"
   ]
 }
