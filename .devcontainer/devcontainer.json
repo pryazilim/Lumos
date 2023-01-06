@@ -1,0 +1,26 @@
+{
+  "name": "Kargomcom DevEnv",
+  "dockerFile": "Dockerfile",
+  "runArgs": [
+    "-v",
+    "/var/run/docker.sock:/var/run/docker.sock"
+  ],
+  "settings": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.formatOnSave": true,
+    "vzfiletemplates.userTemplatesFolders": [
+      "./templates"
+    ],
+    "workbench.iconTheme": "vscode-icons"
+  },
+  "extensions": [
+    "visualzoran.vz-file-templates",
+    "vscode-icons-team.vscode-icons",
+    "editorconfig.editorconfig",
+    "ms-dotnettools.csharp",
+    "ms-vsliveshare.vsliveshare-pack",
+    "gruntfuggly.todo-tree",
+  ]
+}
