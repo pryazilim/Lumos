@@ -10,6 +10,8 @@ public class BlogPost
 
   public string Body { get; set; }
 
+  public char BlogType { get; set; } // B: BlogPost, N: News, E: Example, D: Draft
+
   public DateTime CreatedOn { get; set; }
   public int CreatedBy { get; set; }
 
