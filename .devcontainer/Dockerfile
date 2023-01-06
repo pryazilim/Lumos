@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0
+FROM mcr.microsoft.com/dotnet/sdk:7.0
 # Avoid warnings by switching to noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -25,7 +25,7 @@ RUN apt-get update \
   && chmod +x /usr/local/bin/docker-compose \
   #
   # Install Node
-  && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
+  && curl -sL https://deb.nodesource.com/setup_18.x | bash - \
   && apt-get install -y nodejs \
   #
   # Install Midnight Commander
