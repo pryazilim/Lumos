@@ -208,10 +208,14 @@ a:hover { text-decoration: none; }
 .h-60 { height: 3.75rem; }
 
 .h-64 { height: 4rem; }
+
+.h-278 {height: 278px;}
 /* Min Height */
 /* Max Height */
 .logo{display:block;}
 /* Color Companents */
+.color-181-95{color:rgba(24, 24, 27, 0.95) !important;}
+.color-181-75{color:rgba(24, 24, 27, 0.75) !important;}
 .color-181-50{color:rgba(24, 24, 27, 0.5) !important;}
 /*Background Size and Position*/
 .bg-covered-img { object-fit: cover; object-position: center; background-repeat: no-repeat }
@@ -225,6 +229,8 @@ a:hover { text-decoration: none; }
 .bg-white { background-color: #FFFFFF !important; }
 
 .bg-3D0{background-color: #3d000b;}
+
+.bg-181{background-color: #18181B;}
 
 /* Text Color */
 .text-white { color: #FFFFFF !important; }
@@ -465,6 +471,8 @@ a:hover { text-decoration: none; }
 .px-60 { padding-left: 3.75rem; padding-right: 3.75rem; }
 
 .px-64 { padding-left: 4rem; padding-right: 4rem; }
+
+.px-162 { padding-left: 162px; padding-right: 162px; }
 
 /* Margin  Y */
 .my-28 { margin-top: 1.75rem; margin-bottom: 1.75rem; }
@@ -756,7 +764,8 @@ a:hover { text-decoration: none; }
 .mr-64 { margin-right: 4rem; }
 
 /* CSS */
-
+.bb-1{border-bottom: 1px solid #E4E4E7 ;}
+.contact-text-position{top:50%; transform: translate(0px,-50%); }
 @media (min-width: 1440px) {
   .design-container { width: 1440px; height: auto; }
 }
