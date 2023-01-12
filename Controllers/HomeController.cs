@@ -15,11 +15,11 @@ public class HomeController : Controller
 
   public IActionResult Index()
   {
-    using(var db = new LumosDataContext())
+    using (var db = new LumosDataContext())
     {
-      var posts = db.BlogPosts.Where(e => e.PublishedOn.HasValue && e.PublishedOn < DateTime.Now && !e.DeletedOn.HasValue).OrderByDescending(e => e.PublishedOn).Take(10).ToList();
+      // var posts = db.BlogPosts.Where(e => e.PublishedOn.HasValue && e.PublishedOn < DateTime.Now && !e.DeletedOn.HasValue).OrderByDescending(e => e.PublishedOn).Take(10).ToList();
 
-      return View(posts);
+      return View();
     }
   }
 
