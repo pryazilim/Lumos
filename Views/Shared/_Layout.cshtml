@@ -11,44 +11,71 @@
 </head>
 
 <body>
-  <div class="design-container mx-auto px-48 ">
-    <div class="flex justify-between  align-center">
-      <div class="logo py-16 px-8">
-        <img src="~/img/Logo.svg" alt="Lumos Danışmanlık">
-      </div>
-      <div class="flex gap-24 align-center">
-        <a href="" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">Anasayfa</a>
-        <a href="" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">Hakkımızda</a>
-        <div class="flex gap-8 align-center cursor-pointer open-dropdown">
-          <p class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">Hizmetler</p>
-          <img src="~/img/down-arrow.svg" alt="Lumos Danışmanlık">
+  @* header *@
+  <div class="w-100 bb-1">
+    <div class="design-container mx-auto px-48 ">
+      <div class="flex justify-between  align-center">
+        <div class="logo py-16 px-8">
+          <img src="~/img/Logo.svg" alt="Lumos Danışmanlık">
         </div>
-        <a href="" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">Emsal Kararlar</a>
-        <a href="" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">Haberler</a>
-        <a href="" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">SSS</a>
-        <a href="" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">İletişim</a>
-        <a href="/contact">
-          <div class="bg-3D0 py-12 px-16 rounded-8 flex gap-8">
-            <img src="~/img/tazminat.svg" alt="Lumos Danışmanlık">
-            <p class="px-12 font-weight-500 font-size-14 line-height-20 text-white mb-0">Tazminat Hesapla</p>
+        <div class="flex gap-24 align-center">
+          <a href="" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">Anasayfa</a>
+          <a href="" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">Hakkımızda</a>
+          <div class="flex gap-8 align-center cursor-pointer open-dropdown">
+            <p class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">Hizmetler</p>
+            <img src="~/img/down-arrow.svg" alt="Lumos Danışmanlık">
           </div>
-        </a>
+          <a href="" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">Emsal Kararlar</a>
+          <a href="" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">Haberler</a>
+          <a href="" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">SSS</a>
+          <a href="" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">İletişim</a>
+          <a href="/contact">
+            <div class="bg-3D0 py-12 px-16 rounded-8 flex gap-8">
+              <img src="~/img/tazminat.svg" alt="Lumos Danışmanlık">
+              <p class="px-12 font-weight-500 font-size-14 line-height-20 text-white mb-0">Tazminat Hesapla</p>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   </div>
-
+  @* header *@
   @RenderBody()
+  @* Footer *@
+  <div class="w-100 h-278 relative"
+    style="background: url(/img/iletisim.jpg)no-repeat; background-size: cover; background-position: center; ">
+    <div class="absolute flex justify-between align-center w-100 px-162 contact-text-position">
+      <div class="grid gap-24">
+        <p class="mb-0 font-weight-600 font-size-30 line-height-38 color-181-95">Bizimle İletişime Geçin</p>
+        <p class="mb-0 font-weight-400 font-size-16 line-height-24 color-181-75">Tüm soru ve talepleriniz için.</p>
+      </div>
+      <a href="/contact">
+        <div class="bg-3D0 py-12 px-16 rounded-8 flex gap-8">
+          <p class="px-12 font-weight-500 font-size-14 line-height-20 text-white mb-0">İletişime Geç</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="w-100 bg-181">
+    <div class="flex gap-24 py-28">
+      <div class="py-28">
+        <img class="w-100" src="~/img/Logo2.svg" alt="Lumos Danışmanlık">
+      </div>
+    </div>
+  </div>
+  @* footer *@
+
 
   <script src="~/lib/jquery/dist/jquery.min.js"></script>
   <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="~/js/site.js" asp-append-version="true"></script>
   @await RenderSectionAsync("Scripts", required: false)
 
-  @* <script>
-    $('.open-dropdown').click(function(){
-      console.log('sdad');
+  <script>
+    $('.open-dropdown').click(function () {
+      console.log('tıkladın');
     })
-  </script> *@
+  </script>
 </body>
 
 </html>
