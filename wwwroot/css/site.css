@@ -169,6 +169,8 @@ a:hover { text-decoration: none; }
 .w-60 { width: 3.75rem; }
 
 .w-64 { width: 4rem; }
+
+.w-230 {width: 230px;}
 /*Min- width*/
 /* Height */
 .h-fit-content { height: fit-content; }
@@ -217,6 +219,7 @@ a:hover { text-decoration: none; }
 .color-181-95{color:rgba(24, 24, 27, 0.95) !important;}
 .color-181-75{color:rgba(24, 24, 27, 0.75) !important;}
 .color-181-50{color:rgba(24, 24, 27, 0.5) !important;}
+.color-FFF-65{color: rgba(255, 255, 255, 0.65) !important;}
 /*Background Size and Position*/
 .bg-covered-img { object-fit: cover; object-position: center; background-repeat: no-repeat }
 
@@ -765,7 +768,9 @@ a:hover { text-decoration: none; }
 
 /* CSS */
 .bb-1{border-bottom: 1px solid #E4E4E7 ;}
+.bb-2{border-bottom: 1px solid rgba(255, 255, 255, 0.2) ;}
 .contact-text-position{top:50%; transform: translate(0px,-50%); }
+.pr-logo{width:95px; height:28px;}
 @media (min-width: 1440px) {
   .design-container { width: 1440px; height: auto; }
 }
@@ -866,6 +871,8 @@ a:hover { text-decoration: none; }
   .order-6-m { order: 6; }
 
   .order-12-m { order: 12; }
+
+  .mx-auto-m{margin-left: auto; margin-right: auto;}
 
   /* Width And Height */
   /* Width */
