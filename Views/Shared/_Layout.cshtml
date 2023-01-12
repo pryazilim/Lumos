@@ -13,12 +13,13 @@
 <body>
   @* header *@
   <div class="w-100 bb-1">
-    <div class="design-container mx-auto px-48 ">
+    <div class="design-container mx-auto px-48 px-24-m ">
       <div class="flex justify-between  align-center">
-        <div class="logo py-16 px-8">
-          <img src="~/img/Logo.svg" alt="Lumos Danışmanlık">
+        <div class=" py-16 px-8">
+          <img class="logo block none-m" src="~/img/Logo.svg" alt="Lumos Danışmanlık">
+          <img class="logo none block-m" src="~/img/Logo4.svg" alt="Lumos Danışmanlık">
         </div>
-        <div class="flex gap-24 align-center">
+        <div class="flex gap-24 align-center none-m">
           <a href="" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">Anasayfa</a>
           <a href="" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">Hakkımızda</a>
           <div class="flex gap-8 align-center cursor-pointer open-dropdown">
@@ -36,20 +37,20 @@
             </div>
           </a>
         </div>
+        <img class="w-32 h-32 none block-m" src="~/img/open.svg" alt="open-menu">
       </div>
     </div>
   </div>
   @* header *@
   @RenderBody()
   @* Footer *@
-  <div class="w-100 h-278 relative"
-    style="background: url(/img/iletisim.jpg)no-repeat; background-size: cover; background-position: center; ">
-    <div class="absolute flex justify-between align-center w-100 px-162 contact-text-position">
+  <div class="w-100 h-278 h-208-m relative"style="background: url(/img/iletisim.jpg)no-repeat; background-size: cover; background-position: center; ">
+    <div class="absolute flex flex-wrap-m justify-between align-center w-100 px-162 px-24-m contact-text-position">
       <div class="grid gap-24">
-        <p class="mb-0 font-weight-600 font-size-30 line-height-38 color-181-95">Bizimle İletişime Geçin</p>
-        <p class="mb-0 font-weight-400 font-size-16 line-height-24 color-181-75">Tüm soru ve talepleriniz için.</p>
+        <p class="mb-0 font-weight-600 font-size-30 line-height-38 color-181-95 font-size-24-m line-height-32-m">Bizimle İletişime Geçin</p>
+        <p class="mb-0 font-weight-400 font-size-16 line-height-24 color-181-75 none-m">Tüm soru ve talepleriniz için.</p>
       </div>
-      <a href="/contact">
+      <a href="/contact" style="margin-top: 90px;">
         <div class="bg-3D0 py-12 px-16 rounded-8 flex gap-8">
           <p class="px-12 font-weight-500 font-size-14 line-height-20 text-white mb-0">İletişime Geç</p>
         </div>
