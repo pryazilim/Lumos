@@ -214,7 +214,6 @@ a:hover { text-decoration: none; }
 .h-278 {height: 278px;}
 /* Min Height */
 /* Max Height */
-.logo{display:block;}
 /* Color Companents */
 .color-181-95{color:rgba(24, 24, 27, 0.95) !important;}
 .color-181-75{color:rgba(24, 24, 27, 0.75) !important;}
@@ -770,6 +769,7 @@ a:hover { text-decoration: none; }
 .bb-1{border-bottom: 1px solid #E4E4E7 ;}
 .bb-2{border-bottom: 1px solid rgba(255, 255, 255, 0.2) ;}
 .contact-text-position{top:50%; transform: translate(0px,-50%); }
+.logo{width: 100%; height: 54px;}
 .pr-logo{width:95px; height:28px;}
 @media (min-width: 1440px) {
   .design-container { width: 1440px; height: auto; }
@@ -872,6 +872,8 @@ a:hover { text-decoration: none; }
 
   .order-12-m { order: 12; }
 
+  .contact-text-position{top:8%; transform: translate(0px,0%); }
+
   .mx-auto-m{margin-left: auto; margin-right: auto;}
 
   /* Width And Height */
@@ -949,6 +951,7 @@ a:hover { text-decoration: none; }
   .h-60-m { height: 3.75rem; }
 
   .h-64-m { height: 4rem; }
+  .h-208-m {height: 208px;}
   /* Min Height */
   /* Max Height */
   /* Color Companents */
