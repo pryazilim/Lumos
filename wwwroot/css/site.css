@@ -9,7 +9,8 @@ label { font-weight: 500; font-size: 14px; line-height: 20px; color: #18181B; op
 :root { --primary-color: #2C3143; }
 .container-custom { padding-left: 80px; padding-right: 80px; }
 .row { margin-left: 0 !important; margin-right: 0 !important; }
-a:hover { text-decoration: none !important; color: white }
+a { text-decoration: none; }
+a:hover { text-decoration: none; }
 .custom-file-input { color: #E4E4E7; opacity: 1; }
 .custom-file-input::-webkit-file-upload-button { visibility: hidden; }
 .custom-file-input::before { content: 'Dosya Şeç'; color: black; display: inline-block; background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3); border: 1px solid #999; border-radius: 3px; padding: 5px 8px; outline: none; white-space: nowrap; -webkit-user-select: none; cursor: pointer; text-shadow: 1px 1px #fff; font-weight: 700; font-size: 10pt; }
@@ -209,7 +210,9 @@ a:hover { text-decoration: none !important; color: white }
 .h-64 { height: 4rem; }
 /* Min Height */
 /* Max Height */
+.logo{display:block;}
 /* Color Companents */
+.color-181-50{color:rgba(24, 24, 27, 0.5) !important;}
 /*Background Size and Position*/
 .bg-covered-img { object-fit: cover; object-position: center; background-repeat: no-repeat }
 
@@ -220,6 +223,8 @@ a:hover { text-decoration: none !important; color: white }
 .bg-black { background-color: #000000; }
 
 .bg-white { background-color: #FFFFFF !important; }
+
+.bg-3D0{background-color: #3d000b;}
 
 /* Text Color */
 .text-white { color: #FFFFFF !important; }
