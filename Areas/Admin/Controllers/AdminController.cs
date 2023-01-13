@@ -2,11 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Lumos.AdminControllers;
 
-public class AdminController : Controller
+public class AdminHomeController : Controller
 {
-  private readonly ILogger<AdminController> _logger;
+  private readonly ILogger<AdminHomeController> _logger;
 
-  public AdminController(ILogger<AdminController> logger)
+  public AdminHomeController(ILogger<AdminHomeController> logger)
   {
     _logger = logger;
   }
