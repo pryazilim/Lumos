@@ -234,6 +234,8 @@ a:hover { text-decoration: none; }
 
 .bg-181{background-color: #18181B;}
 
+.bg-3D0-40{background-color: rgba(61, 0, 11, 0.4);}
+
 /* Text Color */
 .text-white { color: #FFFFFF !important; }
 
@@ -476,6 +478,7 @@ a:hover { text-decoration: none; }
 
 .px-162 { padding-left: 162px; padding-right: 162px; }
 
+.px-210{padding-left: 210px; padding-right: 210px;}
 /* Margin  Y */
 .my-28 { margin-top: 1.75rem; margin-bottom: 1.75rem; }
 
@@ -764,7 +767,6 @@ a:hover { text-decoration: none; }
 .mr-60 { margin-right: 3.75rem; }
 
 .mr-64 { margin-right: 4rem; }
-
 /* CSS */
 .bb-1{border-bottom: 1px solid #E4E4E7 ;}
 .bb-2{border-bottom: 1px solid rgba(255, 255, 255, 0.2) ;}
@@ -772,6 +774,7 @@ a:hover { text-decoration: none; }
 .logo{width: 100%; height: 54px;}
 .pr-logo{width:95px; height:28px;}
 .index-slider{height: 520px;}
+.slider-text-position{top:50%; transform: translate(0px,-50%);}
 @media (min-width: 1440px) {
   .design-container { width: 1440px; height: auto; }
 }
@@ -872,6 +875,8 @@ a:hover { text-decoration: none; }
   .order-6-m { order: 6; }
 
   .order-12-m { order: 12; }
+
+  .index-slider{height: 178px;}
 
   .contact-text-position{top:8%; transform: translate(0px,0%); }
 
