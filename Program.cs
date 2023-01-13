@@ -29,6 +29,11 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapAreaControllerRoute(
+    name: "AdminLogin",
+    areaName: "Admin",
+    pattern: "Admin/{controller=AdminHome}/{action=Login}");
+
+app.MapAreaControllerRoute(
     name: "Admin",
     areaName: "Admin",
     pattern: "Admin/{controller=AdminHome}/{action=Index}/{id?}");
