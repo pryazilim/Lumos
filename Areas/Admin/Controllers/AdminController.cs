@@ -11,11 +11,13 @@ public class AdminController : Controller
     _logger = logger;
   }
 
+  [AuthenticationGuard]
   public IActionResult SuperSecurePage()
   {
     return View();
   }
 
+  [AuthenticationGuard]
   public IActionResult Index()
   {
     return View();
