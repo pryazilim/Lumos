@@ -771,6 +771,7 @@ a:hover { text-decoration: none; }
 .contact-text-position{top:50%; transform: translate(0px,-50%); }
 .logo{width: 100%; height: 54px;}
 .pr-logo{width:95px; height:28px;}
+.index-slider{height: 520px;}
 @media (min-width: 1440px) {
   .design-container { width: 1440px; height: auto; }
 }
@@ -1360,6 +1361,8 @@ a:hover { text-decoration: none; }
   .mt-60-m { margin-top: 3.75rem; }
 
   .mt-64-m { margin-top: 4rem; }
+
+  .mt-90-m{margin-top: 90px;}
 
   /*Margin Bottom*/
   .mb-auto-m { margin-bottom: auto; }

@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>@ViewData["Title"] - Lumos</title>
   <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="~/css/site.css" />
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
   <link rel="stylesheet" href="~/Lumos.styles.css" asp-append-version="true" />
 </head>
 
@@ -50,7 +51,7 @@
         <p class="mb-0 font-weight-600 font-size-30 line-height-38 color-181-95 font-size-24-m line-height-32-m">Bizimle İletişime Geçin</p>
         <p class="mb-0 font-weight-400 font-size-16 line-height-24 color-181-75 none-m">Tüm soru ve talepleriniz için.</p>
       </div>
-      <a href="/contact" class="mt-90">
+      <a href="/contact" class="mt-90-m">
         <div class="bg-3D0 py-12 px-16 rounded-8 flex gap-8">
           <p class="px-12 font-weight-500 font-size-14 line-height-20 text-white mb-0">İletişime Geç</p>
         </div>
@@ -59,7 +60,7 @@
   </div>
   <div class="w-100 bg-181">
     <div class="design-container mx-auto px-48 px-24-m ">
-      <div class="flex flex-wrap-m gap-24 py-28 bb-2">
+      <div class="flex grid-m gap-24 py-28 bb-2">
         <div class="py-28 pr-24 mx-auto">
           <img class="w-100 h-110 block none-m" src="~/img/Logo2.svg" alt="Lumos Danışmanlık">
           <img class="w-100 h-64 block-m none" src="~/img/Logo3.svg" alt="Lumos Danışmanlık">
@@ -94,7 +95,7 @@
       </div>
     </div>
     <div class="design-container mx-auto px-48 px-24-m py-28">
-      <div class="flex flex-wrap-m gap-24-m justify-between">
+      <div class="flex grid-m gap-24-m justify-between">
         <p class="mb-0 flex font-weight-400 font-size-14 line-height-20px color-FFF-65 order-6-m">©2022 Lumos Danışmanlık -
           Tüm hakları saklıdır.</p>
         <div class="flex gap-32 order-1-m">
@@ -109,17 +110,12 @@
   </div>
   @* footer *@
 
-
   <script src="~/lib/jquery/dist/jquery.min.js"></script>
   <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script src="~/js/site.js" asp-append-version="true"></script>
   @await RenderSectionAsync("Scripts", required: false)
 
-  <script>
-    $('.open-dropdown').click(function () {
-      console.log('tıkladın');
-    })
-  </script>
 </body>
 
 </html>
