@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <title>Giriş Yap | Lumos Admin</title>
+  <link rel="icon" href="~/Content/Admin/images/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+    type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link href="~/Content/Admin/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="~/Content/Admin/plugins/node-waves/waves.css" rel="stylesheet">
+  <link href="~/Content/Admin/plugins/animate-css/animate.css" rel="stylesheet">
+  <link href="~/Content/Admin/css/styleV3.css" rel="stylesheet">
+  <link href="~/Content/Admin/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+  @* <link href="~/Content/Admin/css/login.css" rel="stylesheet" />*@
+  <script src="https://kit.fontawesome.com/3f85d2c0a1.js"></script>
+  <script src="~/Content/Admin/plugins/jquery/jquery.js"></script>
+</head>
+
+<body class="bg-white">
+  <header class="w-100 flex text-center h-80 border-bottom-1 justify-center align-center bg-white">
+    <div> <img class="w-90 h-40" src="~/Content/Site/img/icon/logo.png" alt="logo" /> </div>
+  </header>
+  <div class="flex flex-wrap align-center bg-white justify-center">
+    @RenderBody()
+  </div>
+  <div class="h-55 bottom-0 w-100 flex justify-center align-center bg-white absolute">
+    <a class="text-font-400 text-blue text-10" href=""><span class="text-third">©2022 - Pr Yazılım</span> Uniq CMS</a>
+  </div>
+  <script src="~/Content/Admin/plugins/jquery/jquery.min.js"></script>
+  <script src="~/Content/Admin/plugins/bootstrap/js/bootstrap.js"></script>
+  <script src="~/Content/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="~/Content/Admin/scripts/admin/js/jquery.nice-select.js"></script>
+  <script src="~/Content/Admin/plugins/node-waves/waves.js"></script>
+  <script src="~/Content/Admin/plugins/jquery-validation/jquery.validate.js"></script>
+  <script src="~/Content/Admin/plugins/sweetalert/sweetalert.min.js"></script>
+  <script src="~/Content/Admin/scripts/admin/js/script.js"></script> @*
+    <script src="/Scripts/Admin/js/pages/examples/sign-in.js"></script>*@
+  <script>
+    function myFunction() {
+      var img = document.getElementById("imgCloseEye").src;
+      var x = document.getElementById("Password");
+      if (x.type === "password") {
+        x.type = "text";
+        document.getElementById("imgCloseEye").src = "/Content/Admin/images/icon/Eye.svg"
+      } else {
+        x.type = "password";
+        document.getElementById("imgCloseEye").src = "/Content/Admin/images/icon/Eye-slash.svg"
+      }
+    }
+    $(".login_content input").keypress(function (e) {
+      if (e.keyCode == 13) {
+        Login();
+      }
+    });
+    $("#Login").click(function () {
+      Login();
+    });
+    function Login() {
+      var data = { Username: $("#Username").val(), Password: $("#Password").val() };
+      $.post("/admin/ajax/login", data, function (data) {
+        if (data.Success) {
+          swal("Başarılı", "Giriş Başarılı Yönlendiriliyorsunuz", "success");
+          window.location.href = "/admin";
+        } else {
+          swal("Hata", data.Message, "warning");
+        }
+      })
+    }
+  </script>
+</body>
+
+</html>
