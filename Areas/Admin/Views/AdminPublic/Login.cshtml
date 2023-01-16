@@ -1,0 +1,95 @@
+@{
+  Layout = null;
+}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="robots" content="noindex">
+    <meta name="robots" content="nofollow">
+
+    <title>Lumos | Giriş Yap</title>
+
+    <link rel="icon" href="~/Content/Admin/images/favicon.ico" type="image/x-icon">
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/admin/style.css" asp-append-version="true" />
+    <link href="~/lib/sweetalert/sweetalert.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+</head>
+<body class="bg-white">
+    <header class="w-100 flex text-center h-80 border-bottom-1 justify-center align-center bg-white">
+      <div>
+        <img class="w-208 h-40" src="~/img-content/admin/icon/Pryazilim.svg" alt="logo" />
+      </div>
+    </header>
+    <div class="flex flex-wrap align-center bg-white justify-center ">
+      <div class="col-md-4 col-sm-12 col-xs-12 mt-login-form  mx-auto login_content">
+        <div class=" mx-auto">
+          <h2 class="text-font-600 text-24 line-h38 mb-16">Hoş geldiniz,</h2>
+          <form>
+            <div class="col-md-12 col-sm-12 col-xs-12 mx-auto p-0 mb-16">
+              <div class="grid">
+                <label class="text-13 text-font-600 line-h19 text-primary" for="user">Kullanıcı Adı</label>
+                <input title="username" class="rounded py-14 px-16 border-primary outline-none input-focus input-placeholder-primary  flex-auto  h-40" id="Username" type="text">
+              </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 mx-auto p-0 mb-16">
+              <div class="flex grid">
+                <label class="text-13 text-font-600 line-h19 text-primary" for="myPassword">Şifre</label>
+                <div class="relative">
+                  <input title="password" class="flex w-100 rounded py-14 pl-12 pr-40 h-40 border-primary outline-none input-focus input-placeholder-primary  flex-auto " type="password" id="Password">
+                  <img id="imgCloseEye" onclick="myFunction()" class="absolute right-0 w-48 h-16 align-center mt-28-minus cursor-pointer" src="~/img-content/admin/icon/Eye-slash.svg" alt="showPas">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 mx-auto p-0">
+              <button type="button" id="Login" class="bg-primary text-white border-none py-14 px-16 w-100 rounded text-font-600 transition-colors text-13 line-h19">Giriş Yap</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="h-55  bottom-0 w-100 flex justify-center align-center bg-white absolute">
+      <a class="text-font-400 text-blue text-10" href=""><span class="text-third">©2023 - Pr Yazılım</span> Uniq CMS</a>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/sweetalert/sweetalert.min.js"></script>
+    <script>
+      function myFunction() {
+        var img = document.getElementById("imgCloseEye").src;
+        var x = document.getElementById("Password");
+        if (x.type === "password") {
+          x.type = "text";
+          document.getElementById("imgCloseEye").src = "/img-content/admin/icon/Eye.svg"
+        } else {
+          x.type = "password";
+          document.getElementById("imgCloseEye").src = "/img-content/admin/icon/Eye-slash.svg"
+        }
+      }
+
+      $(".login_content input").keypress(function (e) {
+        if (e.keyCode == 13) {
+          Login();
+        }
+      });
+
+      $("#Login").click(function () {
+        Login();
+      });
+
+      function Login() {
+        var data = { Username: $("#Username").val(), Password: $("#Password").val() };
+        $.post("/AdminPublic/login", data, function (data) {
+          if (data.Success) {
+            swal("Başarılı", "Giriş Başarılı Yönlendiriliyorsunuz", "success");
+            window.location.href = "/admin";
+          } else {
+            swal("Hata", data.message, "warning");
+          }
+        })
+      }
+    </script>
+</body>
+</html>
+
