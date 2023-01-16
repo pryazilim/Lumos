@@ -81,7 +81,7 @@
       function Login() {
         var data = { Username: $("#Username").val(), Password: $("#Password").val() };
         $.post("/AdminPublic/login", data, function (data) {
-          if (data.Success) {
+          if (data.success) {
             swal("Başarılı", "Giriş Başarılı Yönlendiriliyorsunuz", "success");
             window.location.href = "/admin";
           } else {
