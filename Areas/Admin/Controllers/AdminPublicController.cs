@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Lumos.Admin.AdminPublicController;
+namespace Lumos.Admin;
 
 public class AdminPublicController : Controller
 {
@@ -32,7 +32,14 @@ public class AdminPublicController : Controller
 
     using (var db = new DataContext())
     {
-      currentUser = db.AdminUser!.FirstOrDefault(x => x.UserName == userName && x.Password == password);
+      try
+      {
+        currentUser = db.AdminUser!.FirstOrDefault(x => x.UserName == userName && x.Password == password);
+      }
+      catch(Exception ex)
+      {
+        var error = ex;
+      }
     }
 
     if (currentUser == null)
@@ -41,10 +48,13 @@ public class AdminPublicController : Controller
       result.Message = "Kullanıcı bulunamadı";
       return Json(result);
     }
-
     else
     {
-      HttpContext.Session.SetString("CurrentUser", "");
+      var stringCurrentUserId = currentUser.Id.ToString();
+
+      HttpContext.Session.SetString("CurrentUser", stringCurrentUserId);
+
+      result.Success = true;
     }
 
     return Json(result);
