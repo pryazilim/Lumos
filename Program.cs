@@ -31,12 +31,12 @@ app.UseAuthorization();
 app.MapAreaControllerRoute(
     name: "AdminLogin",
     areaName: "Admin",
-    pattern: "Admin/{controller=AdminPublic}/{action=Login}");
+    pattern: "admin/login/{controller=AdminPublic}/{action=Login}");
 
 app.MapAreaControllerRoute(
     name: "Admin",
     areaName: "Admin",
-    pattern: "Admin/{controller=AdminHome}/{action=Index}/{id?}");
+    pattern: "Admin/{controller=AdminPage}/{action=Index}");
 
 app.MapAreaControllerRoute(
     name: "default",
