@@ -12,35 +12,8 @@ public class AdminHomeController : Controller
   }
 
   [AuthenticationGuard]
-  public IActionResult SuperSecurePage()
-  {
-    return View();
-  }
-
-  [AuthenticationGuard]
   public IActionResult Index()
   {
-    return View();
-  }
-
-  [HttpGet]
-  public IActionResult Login()
-  {
-    return View();
-  }
-
-  [HttpPost]
-  public IActionResult Login(string userName, string password)
-  {
-    object currentUser = null;
-
-    using (var db = new LumosDataContext())
-    {
-      //currentUser = db.Users.FirstOrDefault(e => e.UserName == userName && e.Password == password && e.IsActive && !e.IsDeleted && e.IsValidated);
-    }
-
-    HttpContext.Session.SetString("CurrentUser", "");
-
     return View();
   }
 }
