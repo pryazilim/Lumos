@@ -1,10 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 
-public class LumosDataContext : DbContext
+public class DataContext : DbContext
 {
-  public DbSet<Slider> Sliders { get; set; }
-
-  public DbSet<BlogPost> BlogPosts { get; set; }
+  public DbSet<AdminUser>? AdminUser { get; set; }
 
   protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
   {

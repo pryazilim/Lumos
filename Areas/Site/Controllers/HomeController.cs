@@ -13,7 +13,7 @@ public class HomeController : Controller
 
   public IActionResult Index()
   {
-    using (var db = new LumosDataContext())
+    using (var db = new DataContext())
     {
       // var posts = db.BlogPosts.Where(e => e.PublishedOn.HasValue && e.PublishedOn < DateTime.Now && !e.DeletedOn.HasValue).OrderByDescending(e => e.PublishedOn).Take(10).ToList();
 

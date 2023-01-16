@@ -4,5 +4,5 @@ public class Slider
 
   public int Order { get; set; }
 
-  public string ImageUrl { get; set; }
+  public string? ImageUrl { get; set; }
 }
