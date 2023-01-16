@@ -1,9 +1,10 @@
+using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 public class AuthenticationGuardAttribute : ActionFilterAttribute
 {
-  public string? Page { get; set; }
+  public string Page { get; set; }
   public override void OnActionExecuting(ActionExecutingContext filterContext)
   {
     string action = Page!;
@@ -25,16 +26,16 @@ public class AuthenticationGuardAttribute : ActionFilterAttribute
         currentUser = db.AdminUser!.Where(x => x.Id == currentUserId).Select(x => x.Permission).FirstOrDefault();
       }
 
-      List<string>? permissionList = currentUser!.Split(new char[] { '\"' }).ToList();
+      var permissionList =  JsonConvert.DeserializeObject<List<string>>(currentUser!);
 
       if (currentUser == null)
       {
         filterContext.Result = new RedirectToActionResult("Login", "", null);
       }
 
-      if(!permissionList.Any(x => x == action))
+      if(!permissionList!.Any(x => x == action))
       {
-        if (permissionList.Any(x => x == "Index"))
+        if (permissionList!.Any(x => x == "Index"))
         {
           filterContext.Result = new RedirectResult("/admin");
         }
