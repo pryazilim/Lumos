@@ -51,6 +51,66 @@ public class HomeController : Controller
     }
   }
 
+  public IActionResult PrecedentDecision()
+  {
+    using (var db = new DataContext())
+    {
+      // var posts = db.BlogPosts.Where(e => e.PublishedOn.HasValue && e.PublishedOn < DateTime.Now && !e.DeletedOn.HasValue).OrderByDescending(e => e.PublishedOn).Take(10).ToList();
+
+      return View();
+    }
+  }
+
+  public IActionResult PrecedentDecisionDetail()
+  {
+    using (var db = new DataContext())
+    {
+      // var posts = db.BlogPosts.Where(e => e.PublishedOn.HasValue && e.PublishedOn < DateTime.Now && !e.DeletedOn.HasValue).OrderByDescending(e => e.PublishedOn).Take(10).ToList();
+
+      return View();
+    }
+  }
+
+  public IActionResult News()
+  {
+    using (var db = new DataContext())
+    {
+      // var posts = db.BlogPosts.Where(e => e.PublishedOn.HasValue && e.PublishedOn < DateTime.Now && !e.DeletedOn.HasValue).OrderByDescending(e => e.PublishedOn).Take(10).ToList();
+
+      return View();
+    }
+  }
+
+  public IActionResult NewsDetail()
+  {
+    using (var db = new DataContext())
+    {
+      // var posts = db.BlogPosts.Where(e => e.PublishedOn.HasValue && e.PublishedOn < DateTime.Now && !e.DeletedOn.HasValue).OrderByDescending(e => e.PublishedOn).Take(10).ToList();
+
+      return View();
+    }
+  }
+
+  public IActionResult FAQ()
+  {
+    using (var db = new DataContext())
+    {
+      // var posts = db.BlogPosts.Where(e => e.PublishedOn.HasValue && e.PublishedOn < DateTime.Now && !e.DeletedOn.HasValue).OrderByDescending(e => e.PublishedOn).Take(10).ToList();
+
+      return View();
+    }
+  }
+
+  public IActionResult Contact()
+  {
+    using (var db = new DataContext())
+    {
+      // var posts = db.BlogPosts.Where(e => e.PublishedOn.HasValue && e.PublishedOn < DateTime.Now && !e.DeletedOn.HasValue).OrderByDescending(e => e.PublishedOn).Take(10).ToList();
+
+      return View();
+    }
+  }
+
   public IActionResult Privacy()
   {
     return View();
