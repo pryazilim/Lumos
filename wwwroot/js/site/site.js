@@ -28,6 +28,22 @@ $('.service-slider-images').slick({
   ]
 });
 
+$('.multiple-items').slick({
+  infinite: false,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: false
+});
+
+$('.index-card').mouseover(function(){
+  console.log("asd");
+  $(this).find(".overlay").css('background-color', 'rgba(61, 0, 11, 0.5)');
+});
+$('.index-card').mouseout(function(){
+  console.log("asd");
+  $(this).find(".overlay").css('background-color', 'rgba(0, 0, 0, 0.2)');
+});
+
 $('.open-dropdown').click(function () {
   console.log('tıkladın');
 });
