@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
   <link rel="stylesheet" href="~/css/site/style.css" asp-append-version="true" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.18/css/intlTelInput.css" rel="stylesheet" />
   @await RenderSectionAsync("Header", required: false)
 </head>
 
@@ -17,15 +18,35 @@
     <div class="design-container mx-auto px-48 px-24-m ">
       <div class="flex justify-between  align-center">
         <div class=" py-16 px-8">
-          <img class="logo block none-m" src="~/img/Logo.svg" alt="Lumos Danışmanlık">
-          <img class="logo none block-m" src="~/img/Logo4.svg" alt="Lumos Danışmanlık">
+          <img class="logo block none-m" src="~/img-content/site/icon/Logo.svg" alt="Lumos Danışmanlık">
+          <img class="logo none block-m" src="~/img-content/site/icon//Logo4.svg" alt="Lumos Danışmanlık">
         </div>
-        <div class="flex gap-24 align-center none-m">
-          <a href="" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">Anasayfa</a>
-          <a href="" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">Hakkımızda</a>
+        <div class="flex gap-24 align-center none-m relative">
+          <a href="/" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">Anasayfa</a>
+          <a href="/about" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">Hakkımızda</a>
           <div class="flex gap-8 align-center cursor-pointer open-dropdown">
             <p class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">Hizmetler</p>
-            <img src="~/img/down-arrow.svg" alt="Lumos Danışmanlık">
+            <img src="~/img-content/site/icon/down-arrow.svg" alt="Lumos Danışmanlık">
+          </div>
+          <div class=" absolute position services-dropdown none-m bg-3D0 w-230">
+            <a href="/services">
+              <div class="flex justify-between align-center py-12 px-16 bb-1">
+                <p class="mb-0 font-weight-500 font-size-14 line-height-24 text-white">Tüm Hizmetleri Gör</p>
+                <img class="w-16 h-16" src="/img-content/site/icon/right-icon.svg" alt="">
+              </div>
+            </a>
+            <a href="/services">
+              <div class="flex justify-between align-center py-12 px-16 bb-1">
+                <p class="mb-0 font-weight-500 font-size-14 line-height-24 text-white">Tüm Hizmetleri Gör</p>
+                <img class="w-16 h-16" src="/img-content/site/icon/right-icon.svg" alt="">
+              </div>
+            </a>
+            <a href="/services">
+              <div class="flex justify-between align-center py-12 px-16 bb-1">
+                <p class="mb-0 font-weight-500 font-size-14 line-height-24 text-white">Tüm Hizmetleri Gör</p>
+                <img class="w-16 h-16" src="/img-content/site/icon/right-icon.svg" alt="">
+              </div>
+            </a>
           </div>
           <a href="" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">Emsal Kararlar</a>
           <a href="" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">Haberler</a>
@@ -33,12 +54,12 @@
           <a href="" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">İletişim</a>
           <a href="#">
             <div class="bg-3D0 py-12 px-16 rounded-8 flex gap-8">
-              <img src="~/img/tazminat.svg" alt="Lumos Danışmanlık">
+              <img src="~/img-content/site/icon/tazminat.svg" alt="Lumos Danışmanlık">
               <p class="px-12 font-weight-500 font-size-14 line-height-20 text-white mb-0">Tazminat Hesapla</p>
             </div>
           </a>
         </div>
-        <img class="w-32 h-32 none block-m" src="~/img/open.svg" alt="open-menu">
+        <img class="w-32 h-32 none block-m" src="~/img-content/site/icon/open.svg" alt="open-menu">
       </div>
     </div>
   </div>
@@ -46,7 +67,7 @@
   @RenderBody()
   @* Footer *@
   <div class="w-100 h-278 h-208-m relative"
-    style="background: url(/img/iletisim.jpg)no-repeat; background-size: cover; background-position: center; ">
+    style="background: url(/img-content/site/img/iletisim.jpg)no-repeat; background-size: cover; background-position: center; ">
     <div class="absolute flex flex-wrap-m justify-between align-center w-100 px-162 px-24-m contact-text-position">
       <div class="grid gap-24">
         <p class="mb-0 font-weight-600 font-size-30 line-height-38 color-181-95 font-size-24-m line-height-32-m">Bizimle
@@ -65,8 +86,8 @@
     <div class="design-container mx-auto px-48 px-24-m ">
       <div class="flex grid-m gap-24 py-28 bb-2">
         <div class="py-28 pr-24 mx-auto">
-          <img class="w-100 h-110 block none-m" src="~/img/Logo2.svg" alt="Lumos Danışmanlık">
-          <img class="w-100 h-64 block-m none" src="~/img/Logo3.svg" alt="Lumos Danışmanlık">
+          <img class="w-100 h-110 block none-m" src="~/img-content/site/icon/Logo2.svg" alt="Lumos Danışmanlık">
+          <img class="w-100 h-64 block-m none" src="~/img-content/site/icon/Logo3.svg" alt="Lumos Danışmanlık">
         </div>
         <div class="grid gap-24 w-230">
           <a class="font-weight-400 font-size-14 line-height-20 color-FFF-65 mt-24" href="/about">Hakkımızda</a>
@@ -88,11 +109,11 @@
           <a class="font-weight-500 font-size-16 line-height-24 text-white mt-24" href="#">0 (232) 333 22 11</a>
           <a class="font-weight-400 font-size-14 line-height-20 color-FFF-65" href="#">info@lumosdanismanlik.com</a>
           <div class="flex gap-24">
-            <a href="#"><img class="w-100 h-110" src="~/img/Social Icons.svg" alt="Facebook"></a>
-            <a href="#"><img class="w-100 h-110" src="~/img/Social Icons-1.svg" alt="Facebook"></a>
-            <a href="#"><img class="w-100 h-110" src="~/img/Social Icons-2.svg" alt="Facebook"></a>
-            <a href="#"><img class="w-100 h-110" src="~/img/Social Icons-3.svg" alt="Facebook"></a>
-            <a href="#"><img class="w-100 h-110" src="~/img/Social Icons-4.svg" alt="Facebook"></a>
+            <a href="#"><img class="w-100 h-110" src="~/img-content/site/icon/Social Icons.svg" alt="Facebook"></a>
+            <a href="#"><img class="w-100 h-110" src="~/img-content/site/icon/Social Icons-1.svg" alt="Facebook"></a>
+            <a href="#"><img class="w-100 h-110" src="~/img-content/site/icon/Social Icons-2.svg" alt="Facebook"></a>
+            <a href="#"><img class="w-100 h-110" src="~/img-content/site/icon/Social Icons-3.svg" alt="Facebook"></a>
+            <a href="#"><img class="w-100 h-110" src="~/img-content/site/icon/Social Icons-4.svg" alt="Facebook"></a>
           </div>
         </div>
       </div>
@@ -107,7 +128,7 @@
           <a class="mb-0 font-weight-400 font-size-14 line-height-20px color-FFF-65" href="#">KVKK</a>
         </div>
         <a target="_blank" class="order-12-m flex mx-auto-m" href="https://www.pryazilim.com/">
-          <img class="pr-logo" src="~/img/PryazilimIcon.svg" alt="Alternate Text" />
+          <img class="pr-logo" src="~/img-content/site/icon/PryazilimIcon.svg" alt="Alternate Text" />
         </a>
       </div>
     </div>
@@ -117,8 +138,20 @@
   <script src="~/lib/jquery/dist/jquery.min.js"></script>
   <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-  <script src="~/js/site.js" asp-append-version="true"></script>
+  <script src="~/js/site/site.js" asp-append-version="true"></script>
   @await RenderSectionAsync("Scripts", required: false)
+
+  <script>
+    $('.open-dropdown').click(function() {
+       if ($(".services-dropdown").css("display") == "none") {
+        $('.services-dropdown').css('display','grid');
+
+      }
+      else {
+         $('.services-dropdown').css('display','none');
+      }
+    });
+  </script>
 
 </body>
 
