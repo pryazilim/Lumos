@@ -7,6 +7,7 @@
   <title>@ViewData["Title"] - Lumos</title>
   <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <link rel="stylesheet" href="~/css/general/slick-theme.css" asp-append-version="true" />
   <link rel="stylesheet" href="~/css/site/style.css" asp-append-version="true" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.18/css/intlTelInput.css" rel="stylesheet" />
   @await RenderSectionAsync("Header", required: false)
@@ -48,10 +49,10 @@
               </div>
             </a>
           </div>
-          <a href="" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">Emsal Kararlar</a>
-          <a href="" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">Haberler</a>
-          <a href="" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">SSS</a>
-          <a href="" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">İletişim</a>
+          <a href="/precedent-decision" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">Emsal Kararlar</a>
+          <a href="/news" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">Haberler</a>
+          <a href="/faq" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">SSS</a>
+          <a href="/contact" class="font-weight-500 font-size-14 line-height-20 color-181-50 mb-0">İletişim</a>
           <a href="#">
             <div class="bg-3D0 py-12 px-16 rounded-8 flex gap-8">
               <img src="~/img-content/site/icon/tazminat.svg" alt="Lumos Danışmanlık">
@@ -100,9 +101,8 @@
           <a class="font-weight-400 font-size-14 line-height-20 color-FFF-65" href="#">Araç Hasar Tazminatı</a>
         </div>
         <div class="grid gap-24 w-230">
-          <a class="font-weight-400 font-size-14 line-height-20 color-FFF-65 mt-24" href="/Hakkımızda">Tazminat
-            Hesaplama</a>
-          <a class="font-weight-400 font-size-14 line-height-20 color-FFF-65" href="#">SSS</a>
+          <a class="font-weight-400 font-size-14 line-height-20 color-FFF-65 mt-24" href="">Tazminat Hesaplama</a>
+          <a class="font-weight-400 font-size-14 line-height-20 color-FFF-65" href="/faq">SSS</a>
           <a class="font-weight-400 font-size-14 line-height-20 color-FFF-65" href="/contact">İletişim</a>
         </div>
         <div class="grid gap-24 w-230">
