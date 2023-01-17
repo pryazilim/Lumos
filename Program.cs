@@ -39,6 +39,11 @@ app.MapAreaControllerRoute(
     pattern: "Admin/{controller=AdminPage}/{action=Index}");
 
 app.MapAreaControllerRoute(
+  name: "Calculation",
+  areaName: "Site",
+  pattern: "calculation/{controller=Home}/{action=Calculation}/{id?}");
+
+app.MapAreaControllerRoute(
   name: "Contact",
   areaName: "Site",
   pattern: "contact/{controller=Home}/{action=Contact}/{id?}");
