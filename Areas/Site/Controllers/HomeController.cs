@@ -21,6 +21,36 @@ public class HomeController : Controller
     }
   }
 
+  public IActionResult About()
+  {
+    using (var db = new DataContext())
+    {
+      // var posts = db.BlogPosts.Where(e => e.PublishedOn.HasValue && e.PublishedOn < DateTime.Now && !e.DeletedOn.HasValue).OrderByDescending(e => e.PublishedOn).Take(10).ToList();
+
+      return View();
+    }
+  }
+
+  public IActionResult Services()
+  {
+    using (var db = new DataContext())
+    {
+      // var posts = db.BlogPosts.Where(e => e.PublishedOn.HasValue && e.PublishedOn < DateTime.Now && !e.DeletedOn.HasValue).OrderByDescending(e => e.PublishedOn).Take(10).ToList();
+
+      return View();
+    }
+  }
+
+  public IActionResult ServicesDetail()
+  {
+    using (var db = new DataContext())
+    {
+      // var posts = db.BlogPosts.Where(e => e.PublishedOn.HasValue && e.PublishedOn < DateTime.Now && !e.DeletedOn.HasValue).OrderByDescending(e => e.PublishedOn).Take(10).ToList();
+
+      return View();
+    }
+  }
+
   public IActionResult Privacy()
   {
     return View();
