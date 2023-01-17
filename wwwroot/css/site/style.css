@@ -39,6 +39,8 @@ a:hover { text-decoration: none; }
 .align-end { align-items: end; }
 .align-flex-start { align-items: flex-start; }
 .object-fit-contain { object-fit: contain !important; }
+.object-fit-cover { object-fit: cover !important; }
+.object-position-center{object-position: center;}
 .cursor-pointer { cursor: pointer; }
 .object-cover { object-fit: cover; }
 .right-0 { right: 0; }
@@ -121,6 +123,7 @@ a:hover { text-decoration: none; }
 .h-56 { height: 3.5rem; }
 .h-60 { height: 3.75rem; }
 .h-64 { height: 4rem; }
+.h-134 {height: 134px;}
 .h-278 {height: 278px;}
 .h-652 { height: 652px; }
 /* Min Height */
@@ -131,6 +134,8 @@ a:hover { text-decoration: none; }
 .color-181-50{color:rgba(24, 24, 27, 0.5) !important;}
 .color-FFF-65{color: rgba(255, 255, 255, 0.65) !important;}
 .color-4D5{color: #4D525B !important;}
+.color-F2F{color: #F2F2F2 !important;}
+.color-181-65 {color:rgba(24, 24, 27, 0.65) !important; }
 /*Background Size and Position*/
 .bg-covered-img { object-fit: cover; object-position: center; background-repeat: no-repeat }
 .bg-contain-img { object-fit: contain; object-position: center; background-repeat: no-repeat }
@@ -438,7 +443,15 @@ a:hover { text-decoration: none; }
 .index-card{width: 100%; height:367px; flex: 0 0 31.9%;}
 .card-text{left: 16px; bottom: 16px; z-index: 99;}
 .overlay{background-color: rgba(0, 0, 0, 0.2); width: 100%; height: 100%;}
+.overlay2{background-color: rgba(24, 24, 24, 0.4); width: 100%; height: 100%;}
 .input-border{border: 1px solid #DCE0E5; border-radius: 6px;}
+.slider-picture{width: 100%; height: 444px;}
+.banner{width: 100%; height: 250px; position: relative;}
+.text-position{top: 50%; transform: translate(0px,-50%); }
+.deger-card{border: 1px solid #E4E4E7;}
+.services-dropdown{display: none;}
+.service-picture{height: 337px;}
+.position{left:27%; top: 66px; transform: translate(-27%,0%); z-index: 999;}
 @media (min-width: 1440px) {
   .design-container { width: 1440px; height: auto; }
 }
@@ -496,6 +509,11 @@ a:hover { text-decoration: none; }
   .index-slider{height: 178px;}
   .contact-text-position{top:8%; transform: translate(0px,0%); }
   .mx-auto-m{margin-left: auto; margin-right: auto;}
+  .banner{width: 100%; height: 178px; position: relative;}
+  .deger-card{border: 1px solid #E4E4E7; flex: 0 0 46.1%;}
+  .text-left-m{text-align: left;}
+  .service-picture{height: 268px;}
+  .index-card{width: 100%; height:235px; flex: 0 0 100%;}
   /* Width And Height */
   /* Width */
   .w-auto-m { width: auto; }
