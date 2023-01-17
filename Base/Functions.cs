@@ -16,11 +16,11 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Web;
 
-namespace Bienka.Base
+namespace Lumos.Base
 {
   public static class Functions
   {
-    public static string MainSiteURL = "http://Bienka.pryazilim.net/";
+    public static string MainSiteURL = "http://Lumos.pryazilim.net/";
     private static readonly string CookieKey = "RPjtJEE7CLfmbCbJ2UPW6bt3Q3BK8gquHsSK6qV8QWMVRfS2uYMDWLgE72LwVPwLaGYRUpQ6qrgX2R8he4fcTwfkMV24rnWvvSQbGQPHauYYqBKq6fydbhEzgB7J9gqQKYEY5QPcjJJ6qauuYHTpqV7qCv5epZghBDXwfYk6NZfZ6A2xz5u5mbsTN2wcULdB5csxc4HbzAsapuZKWm8b4AvG8fxx9nr8Chp2qr6ZMBz39fq9YaPmLGBXcVLbmM79";
     private static readonly string PASSWORD = "4y7VHJc6GsmbJbBZAh6nGEpBf4cPpzfCaJ9BG4EWzuXrqedpfsbDnBC4tGKccW8t9SXC7KQ8bshuSThBY7aRU8nZm47ah2Lvhyccfbz72C5mNHVJbkBqVKPnhvDMkJ5hacwaGVkLmMkBYqJ3zMypFXxRrZMgSvTkhqfbkdPj6rbQYVXurnx8HXGjntkWTDu2LDdwPj7T2QwAKrtHXVukNYwxkJaNtqL4bUL6VWPkcvdUujArePBY2NaJjM6Nkuzs";
     private static readonly byte[] initVectorBytes = Encoding.ASCII.GetBytes("F9QJw8GktZ4QJvWd");
@@ -61,7 +61,7 @@ namespace Bienka.Base
           using (var readStream = new StreamReader(wResponse.GetResponseStream()))
           {
             string jsonResponse = readStream.ReadToEnd();
-            var data = JsonConvert.DeserializeObject<Lumos.GeneralModel.CaptchaModel>(jsonResponse);
+            var data = JsonConvert.DeserializeObject<GeneralModel.CaptchaModel>(jsonResponse);
             Valid = data.success;
           }
         }
