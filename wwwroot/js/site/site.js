@@ -26,6 +26,49 @@ $('.service-slider-images').slick({
       }
     },
   ]
+});4
+$('.question').on('click', function () {
+  if ($(this).find(".answer").css("display") == ("none")) {
+    $(this).find(".answer").css('display', 'block');
+    $(this).find(".faq-open").css("display", "none");
+    $(this).find(".faq-close").css("display", "block");
+    $(this).find(".faq-question").css("color", "#333333");
+    $(this).find(".faq-border-add").addClass("faq-border");
+
+  }
+  else {
+    $(this).find(".answer").css('display', 'none');
+    $(this).find(".faq-open").css("display", "block");
+    $(this).find(".faq-close").css("display", "none");
+    $(this).find(".faq-question").css("color", "rgba(24, 24, 27, 0.50)");
+    $(this).find(".faq-border-add").removeClass("faq-border");
+  }
+});
+
+$('.service-slider-images2').slick({
+  infinite: true,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  arrows:true,
+  dots:true,
+
+  prevArrow: '<img src="img-content/site/icon/slider-left-icon.svg" alt="prev" class="slick-prev"></img>',
+  nextArrow: '<img src="img-content/site/icon/slider-left-icon.svg" alt="next" class="slick-next"></img>',
+
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false,
+        //prevArrow: '<img src="/img/icon/Frame-7.svg" alt="prev" class="slick-prev"></img>',
+        //nextArrow: '<img src="/img/icon/Frame-6.svg" alt="next" class="slick-next"></img>',
+
+      }
+    },
+  ]
 });
 
 $('.multiple-items').slick({
