@@ -16,4 +16,11 @@ public class AdminPageController : Controller
   {
     return View();
   }
+
+  [AuthenticationGuard(Page = "Index")]
+  public IActionResult SliderManagement()
+  {
+    return View();
+  }
+
 }
