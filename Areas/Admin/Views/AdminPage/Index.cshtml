@@ -1,1 +1,71 @@
-Hello Admin
+@{
+  ViewBag.Title = "Admin Anasayfa";
+}
+
+<div class="bg-container h-auto px-24 pb-24 pt-96 pb-80">
+  <div class="py-24 flex align-center text-10 text-font-500 line-h16 text-tree ">Anasayfa<span class="ml-8">/</span></div>
+  <div class="flex flex-wrap-mobile gap-y-2">
+    <div class="flex-auto col-sm-12  bg-white h-auto rounded-1 px-24 py-24">
+      <h1 class="text-font-600 text-20 text-dark mb-16">Destek Talebi Oluşturun</h1>
+      <div class="grid mb-16">
+        <label class="text-font-600 text-13 text-secondary" for="myselect ">Konu<span class="text-state text-font-700 ml-4">*</span></label>
+        <select id="myselect" class="flex-auto h-auto text-12  text-font-400 text-secondary input-focus  w-100 topic">
+          <option>Seçiniz</option>
+          <option>Güncelleme İsteği</option>
+          <option>Hata Bildirimi </option>
+        </select>
+      </div>
+      <div class="grid mb-16">
+        <label class="text-font-600 text-13 text-secondary" for="textarea">Talep Açıklaması<span class="text-state text-font-700 ml-4">*</span></label>
+        <textarea class="w-100 min-h-96 max-h-96 input-focus border-primary rounded px-12 pt-12 text-12 text-dark text-font-600 textarea" maxlength="2000" id="message"></textarea>
+        <div class="float-right text-right text-12 line-h19 text-font-400 text-secondary mt-6">
+          <span id="current">0</span>
+          <span id="maximum">/ 2000</span>
+        </div>
+      </div>
+      <button id="PrContact" class="bg-secondary w-100 text-white border-none py-14 px-16 rounded text-font-600 transition-colors text-13 line-h19">Gönder</button>
+    </div>
+    <div class="col-md-4 col-sm-12  bg-white h-224 rounded-1 px-24 py-24">
+      <h2 class="text-12 line-h16 text-dark border-bottom-2 pb-16 mb-0">Anlık Ziyaretçi Sayısı:</h2>
+      <div class="flex justify-between pt-16 pb-32">
+        <span class="text-font-400 text-12 line-h16 text-dark">XXX</span>
+        <img class="w-16 h-16" src="~/Content/Admin/images/icon/User.svg" alt="person" />
+      </div>
+      <h2 class="text-12 line-h16 text-dark border-bottom-2 pb-16 mb-0">Tekil Ziyaretçi Sayısı:</h2>
+      <div class="flex justify-between pt-16">
+        <span class="text-font-400 text-12 line-h16 text-dark">XXX</span>
+        <img class="w-16 h-16" src="~/Content/Admin/images/icon/User.svg" alt="person" />
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-12  bg-white h-168 rounded-1 px-24 py-24">
+      <h2 class="text-12 line-h16 text-dark border-bottom-2 pb-16 mb-0">Lisans Süresi</h2>
+      <div class="flex justify-between pt-16">
+        <span class="text-font-400 text-12 line-h16 text-dark flex">Başlangıç Tarihi:</span>
+        <span class="text-font-400 text-12 line-h16 text-dark flex">06.07.2022</span>
+      </div>
+      <div class="flex justify-between pt-24">
+        <span class="text-font-400 text-12 line-h16 text-dark flex">Bitiş Tarihi:</span>
+        <span class="text-font-400 text-12 line-h16 text-dark flex">06.07.2023</span>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $("#PrContact").click(function () {
+    $(this).attr("disabled", "disabled");
+    var data = {
+      T: $(".topic .current").text(),
+      M: $("#message").val(),
+    };
+    $.post("/admin/ajax/prcontact", data, function (obj) {
+      if (obj.Success) {
+        $("#PrContact").removeAttr("disabled");
+        alert(obj.Message);
+        $("#message").val("");
+      } else {
+        alert(obj.Message);
+        $("#PrContact").removeAttr("disabled");
+      }
+    });
+  });
+</script>
