@@ -1,0 +1,229 @@
+@{
+  ViewBag.Title = "SliderManagement";
+  Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+
+<div id="saveupdatesliderform">
+  <div class="bg-container h-auto px-24 pb-24 pt-96 pb-80">
+    <div class="py-24 flex align-center text-10 text-font-500 line-h16 text-tree d-flow">Anasayfa<span class="ml-8 mr-8">/</span> Sabit İçerikler<span class="ml-8 mr-8">/</span> <span class="text-secondary">Ana Slider Yönetimi</span> <span class="ml-8 mr-8">/</span>Yeni Slider Ekle</div>
+    <div class="col-md-12 col-sm-12 p-0 bg-white rounded-1 mb-24">
+      <div class="px-24 py-24">
+        <h1 class="text-20 line-32 mb-16">Slider Tipi</h1>
+        <div class="flex flex-wrap-mobile gap-2 click">
+          <div class="col-md-2 col-sm-12 p-0 active-text text-center w-47-h emirhan " id="type1" pr-name="Type" data-mert="1">
+            <div class="border-secondry rounded-8 cursor-pointer active-border h-126 " style="background: url('../../Content/Admin/images/slider-tip-1.jpg')no-repeat; background-size: cover !important; background-position: center !important;"></div>
+            <h2 class="text-font-500 text-12 line-h16 text-secondary mt-7 text-dark">Tip 1 (Yazı Solda + Resim Sağda)</h2>
+          </div>
+          <div class="col-md-2 col-sm-12 p-0  text-center w-47-h emirhan " id="type2" pr-name="Type" data-mert="2">
+            <div class="border-secondry rounded-8 cursor-pointer h-126 opacitys" style="background: url('../../Content/Admin/images/slider-tip-2.jpg')no-repeat; background-size: cover !important; background-position: center !important;"></div>
+            <h2 class="text-font-500 text-12 line-h16 text-secondary mt-7">Tip 2 (Yazı Sağda  + Resim Solda)</h2>
+          </div>
+          <div class="col-md-2 col-sm-12 p-0  text-center w-47-h emirhan " id="type3" pr-name="Type" data-mert="3">
+            <div class="border-secondry rounded-8 cursor-pointer h-126 opacitys" style="background: url('../../Content/Admin/images/slider-tip-3.jpg')no-repeat; background-size: cover !important; background-position: center !important;"></div>
+            <h2 class="text-font-500 text-12 line-h16 text-secondary mt-7">Tip 3 (Başlık + Açıklama)</h2>
+          </div>
+          @*<div class="col-md-2 col-sm-12 p-0  text-center w-47-h emirhan " id="" pr-name="Type"  data-mert="4">
+              <div class="border-secondry rounded-8 cursor-pointer h-126 opacitys" style="background: url('../../Content/Admin/images/slider-tip-4.jpg')no-repeat; background-size: cover !important; background-position: center !important;"></div>
+              <h2 class="text-font-500 text-12 line-h16 text-secondary mt-7">Tip 4 (Yalnızca Görsel)</h2>
+            </div>*@
+        </div>
+      </div>
+    </div>
+    <input type="hidden" pr-name="Type" id="Type" />
+
+    <div class="col-md-12 col-sm-12 p-0 bg-white rounded-1 tab-content">
+      <div class="px-24 py-24">
+        <h1 class="text-20 line-32 mb-16">Slider İçeriği</h1>
+        @* <ul class="nav nav-tabs tab-nav-right pb-14" role="tablist">
+
+            <li role="presentation" class="@(i == 0 ? "active" : "") TabMenu"><a href="#@Model.LanguageList[i].LanguageName" data-toggle="tab"> @Model.LanguageList[i].DisplayName</a></li>
+
+        </ul> *@
+        <form class="dropzone border type-3-none" pr-name="Logo"></form>
+        <div class="grid mb-16">
+          <label class="text-font-600 text-13 text-secondary" for="title">Görüntülenme Sırası<span class="text-state text-font-700 ml-4">*</span></label>
+          <input class="text-dark text-font-500 text-12 rounded py-14 px-16 border-primary outline-none input-focus input-placeholder-primary  flex-auto mb-12 h-40" id="orderby" type="number" pr-name="OrderBy">
+        </div>
+        @* @for (int i = 0; i < Model.LanguageList.Count; i++)
+        {
+          <div role="tabpanel" class="tab-pane fade@(i==0 ? "in active" : "")" id="@Model.LanguageList[i].LanguageName">
+            <div class="grid mb-16" id="type4Title">
+              <label class="text-font-600 text-13 text-secondary" for="title">Slider Başlığı<span class="text-state text-font-700 ml-4">*</span></label>
+              <textarea type="ckeditor" class="d-none " id="Title@(Model.LanguageList[i].LanguageName)"></textarea>
+            </div>
+            <div class="grid mb-16" id="type2Description">
+              <label class="text-font-600 text-13 text-secondary" for="undertitle">Alt Başlık (Açıklama)<span class="text-state text-font-700 ml-4">*</span></label>
+              <input class="text-dark text-font-500 text-12 rounded py-14 px-16 border-primary outline-none input-focus input-placeholder-primary  flex-auto mb-12 h-40" id="undertitle@(Model.LanguageList[i].LanguageName)" type="text" pr-name="UnderTitle_@(Model.LanguageList[i].VariableCode)">
+            </div>
+            <div class="flex justify-between gap-2 flex-wrap-mobile" id="type3ButtonTitle">
+              <div class="grid mb-16 flex-auto col-md-6 col-sm-12 p-0">
+                <label class="text-font-600 text-13 text-secondary" for="buttontitle">Buton Başlığı<span class="text-state text-font-700 ml-4">*</span></label>
+                <input class="text-dark text-font-500 text-12 rounded py-14 px-16 border-primary outline-none input-focus input-placeholder-primary  flex-auto mb-12 h-40" id="buttontitle@(Model.LanguageList[i].LanguageName)" type="text" pr-name="ButtonTitle_@(Model.LanguageList[i].VariableCode)">
+              </div>
+              <div class="grid mb-16 flex-auto col-md-6 col-sm-12 p-0">
+                <label class="text-font-600 text-13 text-secondary" for="buttonlink">Buton Yönlendirme Linki<span class="text-state text-font-700 ml-4">*</span></label>
+                <input class="text-dark text-font-500 text-12 rounded py-14 px-16 border-primary outline-none input-focus input-placeholder-primary  flex-auto mb-12 h-40" id="buttonlink@(Model.LanguageList[i].LanguageName)" type="text" pr-name="ButtonUrl_@(Model.LanguageList[i].VariableCode)">
+              </div>
+            </div>
+          </div>
+        } *@
+      </div>
+    </div>
+  </div>
+  <div class="h-72 bottom-0 fixed w-100 flex justify-end align-center bg-white py-16 px-16 z-index-1 ">
+    <div class="flex gap-1 pr-24">
+      <button class="returnPage bg-white text-secondary border-none py-14 px-16 rounded text-font-600 transition-colors text-13 line-h19 alertCardOpen">Vazgeç</button>
+      <button type="button" class="bg-primary text-white border-none py-14 px-16 rounded text-font-600 transition-colors text-13 line-h19 succesCardOpen Save mb-0 Save">
+        Değişiklikleri Kaydet
+      </button>
+    </div>
+  </div>
+</div>
+
+<link href="~/Content/Admin/css/dropzone.css" rel="stylesheet" />
+<script src="~/Content/Admin/scripts/admin/js/dropzone.js"></script>
+<script>
+  $(document).ready(function () {
+    $('.js-example-basic-single').select2();
+  });
+
+  $(function () {
+    CKEDITOR.replace('Titletr', { allowedContent: 'p b i ol ul li;' });
+    CKEDITOR.replace('Titleen', { allowedContent: 'p b i ol ul li;' });
+  });
+  var Adddata = new FormData();
+  var AddLogoFiles = [];
+  var errorFiles = [];
+  $(".dropzone").dropzone({
+    dictDefaultMessage: " <p>Resim Seçiniz ya da Bu Alana Sürükleyiniz</p>",
+    url: "/SubmitProperty",
+    addRemoveLinks: true,
+    maxFilesize: 10,
+    maxFiles: 0,
+    init: function () {
+      this.on("complete", function (file) {
+        var dataObj = {};
+        dataObj.Files = file;
+        AddLogoFiles.push(dataObj);
+        dataObj = {};
+        $(AddLogoFiles).each(function (i) {
+          $(errorFiles).each(function (j) {
+            if (AddLogoFiles[i].Files.name === errorFiles[j].name) {
+              AddLogoFiles.splice(i, 1);
+              errorFiles.splice(j, 1);
+            }
+          });
+        });
+      });
+      this.on("maxfilesexceeded", function () {
+        if (this.files[1] != null) {
+          this.removeFile(this.files[0]);
+        }
+      });
+      this.on('removedfile', function (file) {
+        $.each(AddLogoFiles, function (i) {
+          if (AddLogoFiles[i].Files.name === file.name) {
+            AddLogoFiles.splice(i, 1);
+            return false;
+          }
+        });
+      });
+      this.on("error", function (file, message) {
+        if (message == "MaxFileSize") {
+          alert("Seçtiğiniz dosyanın boyutu çok fazla ( " + Math.round(file.size / 1024 / 10.24) / 100 + " MB). En Fazla: 10MB Yükleyebilirsiniz.");
+          errorFiles.push(file);
+          this.removeFile(file);
+        }
+      });
+    }
+  });
+
+  $(".emirhan").click(function () {
+    var val = $(this).data("mert");
+    $("#Type").val(val);
+    console.log(val);
+  })
+
+  $(".Save").click(function () {
+    $(".PostLoader").show();
+
+    var Titletr = StringRegex(CKEDITOR.instances.Titletr.getData());
+    var Titleen = StringRegex(CKEDITOR.instances.Titleen.getData());
+
+    //Adddata.append("CategoryId", $('#Categoryid').val());
+    Adddata.append("OrderBy", $("#orderby").val());
+
+    Adddata.append("Titletr", Titletr);
+    Adddata.append("Titleen", Titleen);
+
+    Adddata.append("UnderTitletr", $("#undertitletr").val());
+    Adddata.append("UnderTitleen", $("#undertitleen").val());
+    Adddata.append("ButtonTitletr", $("#buttontitletr").val());
+    Adddata.append("ButtonTitleen", $("#buttontitleen").val());
+    Adddata.append("ButtonUrltr", $("#buttonlinktr").val());
+    Adddata.append("ButtonUrlen", $("#buttonlinken").val());
+    Adddata.append("Type", $("#Type").val());
+
+    if (AddLogoFiles.length > 0) {
+      Adddata.append("Logo", AddLogoFiles[0].Files);
+    }
+
+    $.ajax({
+      xhr: function () {
+        var xhr = new window.XMLHttpRequest();
+        xhr.upload.addEventListener("progress",
+          function (evt) {
+            $(".progress").show();
+            $(".progress")
+              .html(
+                ' <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0">0%</div>');
+            if (evt.lengthComputable) {
+              var percentComplete = evt.loaded / evt.total;
+
+              $('.progress-bar').css({
+                width: percentComplete * 100 + '%'
+              });
+              $(".progress-bar").html(percentComplete * 100 + '%');
+            }
+          },
+          false);
+        return xhr;
+      },
+      url: "/admin/ajax/SliderProcess",
+      type: "POST",
+      processData: false,
+      contentType: false,
+      data: Adddata,
+      success: function (response) {
+        if (response.Success) {
+          $(".PostLoader").hide();
+          swal("", "Slider Eklendi .Sayfa Yenileniyor..", "success");
+          Adddata = new FormData();
+          AddLogoFiles = [];
+
+          setTimeout(function () {
+            window.location.reload();
+          },
+            1000);
+
+        } else {
+          $(".PostLoader").hide();
+          swal("", response.Message, "error");
+          Adddata = new FormData();
+        }
+      },
+      error: function (er) {
+      }
+    });
+    function StringRegex(mtn) {
+      while (mtn.indexOf("<") != -1) {
+        mtn = mtn.replace("<", "_-TagAc-_");
+      }
+      while (mtn.indexOf(">") != -1) {
+        mtn = mtn.replace(">", "_-TagKapa-_");
+      }
+      mtn = mtn.replace(/&#39;/g, "'");
+      return mtn;
+    }
+  });
+</script>
