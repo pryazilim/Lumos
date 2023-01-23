@@ -34,6 +34,11 @@ app.MapAreaControllerRoute(
     pattern: "admin/login/{controller=AdminPublic}/{action=Login}");
 
 app.MapAreaControllerRoute(
+    name: "SliderManagement",
+    areaName: "Admin",
+    pattern: "Admin/slider-management/{controller=AdminPage}/{action=SliderManagement}");
+
+app.MapAreaControllerRoute(
     name: "Admin",
     areaName: "Admin",
     pattern: "Admin/{controller=AdminPage}/{action=Index}");
