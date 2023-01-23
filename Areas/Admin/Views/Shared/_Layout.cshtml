@@ -1,15 +1,164 @@
 <!DOCTYPE html>
 <html>
-
 <head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta name="robots" content="noindex">
+  <meta name="robots" content="nofollow">
+  <meta name="description" content="Pr yazilim Admin">
+  <title>@ViewBag.Title | Lumos </title>
+  <link rel="icon" href="~/Content/Admin/images/favicon.ico" type="image/x-icon">
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+  <script src="https://use.fontawesome.com/667a8d8a01.js"></script>
 
+  @*<link href="/Content/Admin/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" />*@
+
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link href="~/Content/Admin/plugins/node-waves/waves.css" rel="stylesheet" />
+  <link href="~/Content/Admin/plugins/animate-css/animate.css" rel="stylesheet" />
+  <link rel="stylesheet" href="~/css/admin/style.css" asp-append-version="true" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.11.4/datatables.min.css" />
+  <link rel="stylesheet" href="~/css/admin/nice-select.css" asp-append-version="true" />
+  <link rel="stylesheet" href="~/css/admin/all-themes.css" asp-append-version="true" />
+  <link href="~/Content/Admin/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+  <link href="~/Content/Admin/plugins/jquery-datatable/skin/bootstrap/css/datatables.min.css" rel="stylesheet" />
+  <script src="~/Content/Admin/plugins/jquery/jquery.js"></script>
+  <script src="~/Content/Admin/plugins/jquery-datatable/jquery.dataTables.js"></script>
+  <script src="~/Content/Admin/plugins/jquery-datatable/skin/bootstrap/js/datatables.min.js"></script>
+  <script src="~/Content/Admin/plugins/ckeditor/config.js"></script>
+  <script src="~/Content/Admin/scripts/admin/js/jquery.datetimepicker.full.min.js"></script>
+  <script src="https://cdn.ckeditor.com/ckeditor5/35.4.0/classic/ckeditor.js"></script>
+  <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+  <link rel="stylesheet" href="~/css/admin/dropzone.css" asp-append-version="true" />
+  <link href="~/Content/Admin/css/jquery.datetimepicker.min.css" rel="stylesheet" />
 </head>
 
-<body class="bg-white">
+<body>
 
-  <div class="flex flex-wrap align-center bg-white justify-center">
+  <div class="overlaypage"></div>
+  <div class="overlaypage1"></div>
+  <header class="w-100 flex text-center h-80 border-bottom-1 justify-between align-center bg-white px-24">
+    <div class="min-width-d-none">
+      <div class="open-left-bar cursor-pointer">
+        <img class="w-24 h-24 openbutton" src="~/Content/Admin/images/icon/Menu.svg" alt="menuicon" />
+        <img class="w-24 h-24  closebutton" src="~/Content/Admin/images/icon/Close-blue-icon.svg" alt="close">
+      </div>
+      <div class="sidebar-left overflow-y ">
+        <ul class="">
+          <li><a href="/admin">Anasayfa</a></li>
+          <li><a class="flex justify-between " href="#">Sabit İçerikler<img class="w-16 h-16" src="~/Content/Admin/images/icon/Plus-icon.svg" alt="plus" /></a></li>
+          @*<li><a href="/admin/CategoryManagement">Kategoriler</a></li>*@
+          <li><a href="/admin/ServicesList">Hakkımızda</a></li>
+          <li><a href="/admin/AboutList">Hizmetler</a></li>
+          <li><a href="/admin/ProductList">Ürünler</a></li>
+          <li><a href="/admin/AboutList">Hizmetler</a></li>
+          <li><a href="/admin/ProjectsList">Projeleri</a></li>
+          <li><a href="/admin/BlogAndNewsList">Haberler/Bloglar</a></li>
+          <li><a href="/admin/ReferenceList">Referanslar</a></li>
+          <li><a href="/admin/PagesList">Sayfalar</a></li>
+          <li><a href="/admin/ContractsList">Sözleşmeler</a></li>
+          @*<li><a href="/admin/GalleryList">Galeri</a></li>*@
+          <li><a href="/admin/Contact">Form Yönetimi</a></li>
+          @*<li><a href="#">S.S.S Yönetimi</a></li>*@
+        </ul>
+      </div>
+    </div>
+    <div class="">
+      <a href="/admin/" class="cursor-pointer">
+        <img class=" w-135 h-40" src="~/Content/Site/img/icon/logo-2.svg" alt="logo" />
+      </a>
+    </div>
+    <div class="min-width-d-none">
+      <div class="open-right-bar cursor-pointer">
+        <img class="w-24 h-24 useropen" src="~/Content/Admin/images/icon/User-circle.svg" alt="usericon" />
+        <img class="w-24 h-24 userclose" src="~/Content/Admin/images/icon/Close-blue-icon.svg" alt="closeuser">
+      </div>
+      <div class="sidebar-right">
+        <ul class="">
+          <li><a class="flex justify-between text-blue" href="#">Siteye Git <img class="w-16 h-16" src="~/Content/Admin/images/icon/home-blue-icon.svg" alt="home" /></a></li>
+          <li><a class="flex justify-between" href="#">Kullanıcı Ayarları<img class="w-16 h-16" src="~/Content/Admin/images/icon/Settings.svg" alt="Settings" /></a></li>
+          <li><a class="flex justify-between" href="/admin/logout">Çıkış Yap<img class="w-16 h-16" src="~/Content/Admin/images/icon/Logout.svg" alt="Logout" /></a></li>
+        </ul>
+      </div>
+    </div>
+    <nav class="display-none-M">
+      <ul class="flex m-0 text-font-500 text-12 text-secondary headerNavbarLinksText h-100">
+        <li class="px-16 "><a class="" href="/admin">Anasayfa</a></li>
+        <li class="px-16 openSabitDropDown cursor-pointer text-primary">
+          Sabit İçerikler
+          <div class="sabitDropDown absolute right-0 mr-856 px-16 py-16 bg-white h-auto box-shadow-primary rounded w-208 grid gap-x-2 mt-30">
+            <a class="flex justify-between" href="/admin/SliderList">Ana Slider Yönetimi</a>
+            <a class="flex justify-between" href="/admin/IndexContentList">Ana Sayfa İçerik Yönetimi</a>
+            <a class="flex justify-between" href="/admin/OtherFixedPageList">Diğer Sabit Sayfa</a>
+            <a class="flex justify-between text-left" href="/admin/ContractsList">Politika veya Sözleşme Yönetimi</a>
+            <a class="flex justify-between" href="/admin/FAQList">Destek/SSS</a>
+          </div>
+        </li>
+        @*<li class="px-16"><a href="/admin/CategoryManagement">Kategoriler</a></li>*@
+        <li class="px-16"><a href="/admin/ServicesList">Hakkımızda</a></li>
+        <li class="px-16"><a href="/admin/AboutList">Hizmetler</a></li>
+        <li class="px-16 openSabitDropDown cursor-pointer text-primary">
+          Ürünler
+          <div class="sabitDropDown absolute right-0 mr-special px-16 py-16 bg-white h-auto box-shadow-primary rounded w-208 grid gap-x-2 mt-30">
+            <a class="flex justify-between" href="/admin/ProductList">Ürün Listesi</a>
+            @*<a class="flex justify-between" href="/admin/ProductPropertyList">Ürün Özellikleri</a>*@
+          </div>
+        </li>
+        @*<li class="px-16"><a href="/admin/ProductList">Ürünler</a></li>
+          <li class="px-16"><a href="/admin/ProductPropertyList">Ürün Özellikleri</a></li>*@
+        <li class="px-16"><a href="/admin/BlogAndNewsList">Haberler/Bloglar</a></li>
+        <li class="px-16"><a href="/admin/ReferenceList">Referanslar</a></li>
+        <li class="px-16"><a href="/admin/PagesList">Sayfalar</a></li>
+        @*<li class="px-16"><a href="/admin/ContractsList">Sözleşmeler</a></li>*@
+        @*<li class="px-16"><a href="/admin/GalleryList">Galeri</a></li>*@
+        <li class="px-16"><a href="/admin/Contact">Form Yönetimi</a></li>
+        @*<li class="px-16"><a href="#">S.S.S Yönetimi</a></li>*@
+        <li class="px-16"><img class="h-16 w-0" src="~/Content/Admin/images/icon/header-line.svg" alt="line" /></li>
+        <li class="px-16">
+          <img class="w-24 h-24 -mt-6 cursor-pointer openUserDropDown" src="~/Content/Admin/images/icon/User-circle.svg" alt="user" />
+          <div class="userDropDown absolute right-0 mr-39 px-16 py-16 bg-white h-auto box-shadow-primary rounded w-208 grid gap-y-2 mt-30">
+            <a target="_blank" class="flex justify-between text-blue linkGoWeb" href="/">Siteye Git <img class="w-16 h-16" src="~/Content/Admin/images/icon/home-blue-icon.svg" alt="home" /></a>
+            <a class="flex justify-between" href="#">Kullanıcı Ayarları<img class="w-16 h-16" src="~/Content/Admin/images/icon/Settings.svg" alt="Settings" /></a>
+            <a class="flex justify-between" href="/admin/logout">Çıkış Yap<img class="w-16 h-16" src="~/Content/Admin/images/icon/Logout.svg" alt="Logout" /></a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="content">
     @RenderBody()
+  </section>
+  <div class="h-55 bottom-0 fixed w-100 flex justify-center justify-between-M align-center bg-white py-16 px-16">
+    <a class="text-font-400 text-blue text-10 ml-auto m-none-M" href="#"><span class="text-third">©2022 - Pr Yazılım</span> Uniq CMS</a>
+    <div class="ml-auto flex m-none-M">
+      <a href="#" class="ml-auto text-blue text-10 text-font-500"><img class="w-12 h-12 mr-6" src="~/Content/Admin/images/icon/footer-phone-icon.svg" alt="phone" />+90 232 700 0770</a>
+    </div>
   </div>
+  <script src="~/lib/jquery/dist/jquery.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <script src="~/js/admin/jquery.nice-select.js" asp-append-version="true"></script>
+  <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="~/Content/Admin/plugins/sweetalert/sweetalert.min.js"></script>
+  <script src="~/Content/Admin/plugins/node-waves/waves.js"></script>
+  <script src="~/js/admin/script.js" asp-append-version="true"></script>
+  <script src="~/js/admin/prengine.js" asp-append-version="true"></script>
+
+
 
 </body>
 </html>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+<script>
+  var pathname = window.location.pathname;
+  $('li.active').not('.TabMenu').removeClass('active');
+  $('a[href="' + pathname + '"]').closest("li").addClass("active");
+</script>
