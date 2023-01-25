@@ -72,6 +72,81 @@ namespace Lumos.Base
         return true;
       }
     }
+    public static string StripTagsRegexIcerik(string source)
+    {
+      var alt = "";
+      var url = "";
+      var style = "";
+      if (source.Contains("_img"))
+      {
+        var src = source;
+        alt = src.Split('"')[1];
+        url = src.Split('"')[3];
+        style = src.Split('"')[5];
+
+      }
+      source = source.Replace("_-TagAc-_", "<")
+                     .Replace("_-TagKapa-_", ">")
+                     .Replace("<strong>", "--|strong Tagi Aç|--")
+                     .Replace("</strong>", "--|strong Tagi kapa|--")
+                     .Replace("<img alt=\"" + alt + "\" src=\"" + url + "\" style=\"" + style + "\" />", "--|img Tagi Aç|--")
+                     .Replace("<b>", "--|strong Tagi Aç|--")
+                     .Replace("</b>", "--|strong Tagi kapa|--")
+                     .Replace("<i>", "--|em Tagi Aç|--")
+                     .Replace("</i>", "--|em Tagi kapa|--")
+                     .Replace("<em>", "--|em Tagi Aç|--")
+                     .Replace("</em>", "--|em Tagi kapa|--")
+                     .Replace("<h4>", "--|h4 Tagi Aç|--")
+                     .Replace("</h4>", "--|h4 Tagi kapa|--")
+                     .Replace("<h2>", "--|h2 Tagi Aç|--")
+                     .Replace("</h2>", "--|h2 Tagi kapa|--")
+                     .Replace("<span style=\"text-decoration: underline;\">", "--|span Tagi Aç|--")
+                     .Replace("</span>", "--|span Tagi kapa|--")
+                     .Replace("<ol>", "--|ol Tagi Aç|--")
+                     .Replace("</ol>", "--|ol Tagi kapa|--")
+                     .Replace("<ul>", "--|ul Tagi Aç|--")
+                     .Replace("</ul>", "--|ul Tagi kapa|--")
+                     .Replace("<li>", "--|li Tagi Aç|--")
+                     .Replace("</li>", "--|li Tagi kapa|--")
+                     .Replace("<br />", "--|br Tagi aç kapa|--")
+                     .Replace("<p>", "--|p Tagi Aç|--")
+                     .Replace("</p>", "--|p Tagi kapa|--")
+                     .Replace("&lt;script&gt;", "")
+                     .Replace("&lt;/script&gt;", "");
+      source = Regex.Replace(source, "<.*?>|&lt;iframe.*?/iframe&gt;", string.Empty)
+                    .Replace("<", "&amp;lt;")
+                    .Replace(">", "&amp;gt;")
+                    .Replace("&lt;", "&amp;lt;")
+                    .Replace("&gt;", "&amp;gt;")
+                    .Replace("--|strong Tagi Aç|--", "<strong>")
+                    .Replace("--|strong Tagi kapa|--", "</strong>")
+                    .Replace("--|img Tagi Aç|--", "<img alt=\"" + alt + "\" src=\"" + url + "\" style=\"" + style + "\" />")
+                    .Replace("--|em Tagi Aç|--", "<em>")
+                    .Replace("--|em Tagi kapa|--", "</em>")
+                    .Replace("--|h4 Tagi Aç|--", "<h4>")
+                    .Replace("--|h4 Tagi kapa|--", "</h4>")
+                    .Replace("--|h2 Tagi Aç|--", "<h2>")
+                    .Replace("--|h2 Tagi kapa|--", "</h2>")
+                    .Replace("--|span Tagi Aç|--", "<span style=\"text-decoration: underline;\">")
+                    .Replace("--|span Tagi kapa|--", "</span>")
+                    .Replace("--|ol Tagi Aç|--", "<ol>")
+                    .Replace("--|ol Tagi kapa|--", "</ol>")
+                    .Replace("--|ul Tagi Aç|--", "<ul>")
+                    .Replace("--|ul Tagi kapa|--", "</ul>")
+                    .Replace("--|li Tagi Aç|--", "<li>")
+                    .Replace("--|li Tagi kapa|--", "</li>")
+                    .Replace("--|br Tagi aç kapa|--", "<br>")
+                    .Replace("--|p Tagi Aç|--", "<p>")
+                    .Replace("--|p Tagi kapa|--", "</p>")
+                    .Replace("&nbsp;", " ")
+                    .Replace("</strong><strong>", string.Empty)
+                    .Replace("</strong><br><strong>", "<br>")
+                    .Replace("</span><span style=\"text-decoration: underline;\">", string.Empty)
+                    .Replace("</span><br><span style=\"text-decoration: underline;\">", "<br>")
+                    .Replace("</em><em>", string.Empty)
+                    .Replace("</em><br><em>", "<br>");
+      return source;
+    }
 
     public static void RandevuMailGonder(string N, string E, string P, DateTime? D)
     {
@@ -165,7 +240,6 @@ namespace Lumos.Base
       {
       }
     }
-
     public static void DestekTalebiMailGonder(string T, string M)
     {
       try
@@ -416,7 +490,6 @@ namespace Lumos.Base
     //     return string.Empty;
     //   }
     // }
-
      public static string CookieEncoder(string text)
     {
       var _result = string.Empty;
@@ -430,7 +503,6 @@ namespace Lumos.Base
       }
       return encryptWithKey(_result);
     }
-
     public static string CookieDecoder(string text)
     {
       var _result = string.Empty;
@@ -443,7 +515,6 @@ namespace Lumos.Base
       }
       return _result;
     }
-
     private static string decryptWithKey(string value)
     {
       byte[] cipherTextBytes = Convert.FromBase64String(value);
@@ -468,7 +539,6 @@ namespace Lumos.Base
         }
       }
     }
-
      private static string encryptWithKey(string value)
     {
       byte[] plainTextBytes = Encoding.UTF8.GetBytes(value);
@@ -494,7 +564,6 @@ namespace Lumos.Base
         }
       }
     }
-
      public static string VerifyCookieDecoder(string text)
     {
       var _result = string.Empty;
@@ -507,7 +576,6 @@ namespace Lumos.Base
       }
       return _result;
     }
-
     public static string VerifyCookieEncoder(string text)
     {
       var _result = string.Empty;
@@ -518,6 +586,214 @@ namespace Lumos.Base
         _result += CookieKey[_rnd.Next(0, CookieKey.Length - 1)].ToString() + CookieKey[_rnd.Next(0, CookieKey.Length - 1)].ToString() + text[i].ToString();
       }
       return encryptWithKey(_result);
+    }
+    public static void CropImage(Image originalImage, string path, int _targetWidth, int _targetHeight, bool IsCrop, int imageType, Rectangle? destinationRectangle = null)
+    {
+      Bitmap _processedPhoto = null;
+      Graphics grafik = null;
+
+      int _lastWidth = 0, _lastHeight = 0;
+
+      if (Array.IndexOf(originalImage.PropertyIdList, 274) > -1)
+      {
+        var orientation = (int)originalImage.GetPropertyItem(274).Value[0];
+        switch (orientation)
+        {
+          case 1:
+            // No rotation required.
+            break;
+          case 2:
+            originalImage.RotateFlip(RotateFlipType.RotateNoneFlipX);
+            break;
+          case 3:
+            originalImage.RotateFlip(RotateFlipType.Rotate180FlipNone);
+            break;
+          case 4:
+            originalImage.RotateFlip(RotateFlipType.Rotate180FlipX);
+            break;
+          case 5:
+            originalImage.RotateFlip(RotateFlipType.Rotate90FlipX);
+            break;
+          case 6:
+            originalImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            break;
+          case 7:
+            originalImage.RotateFlip(RotateFlipType.Rotate270FlipX);
+            break;
+          case 8:
+            originalImage.RotateFlip(RotateFlipType.Rotate270FlipNone);
+            break;
+        }
+        // This EXIF data is now invalid and should be removed.
+        originalImage.RemovePropertyItem(274);
+      }
+
+      try
+      {
+        if ((originalImage.Width < _targetWidth) && (originalImage.Height < _targetHeight))
+        {
+          _processedPhoto = new Bitmap(originalImage.Width, originalImage.Height);
+          grafik = Graphics.FromImage(_processedPhoto);
+
+          grafik.SmoothingMode = SmoothingMode.HighQuality;
+          grafik.CompositingQuality = CompositingQuality.HighQuality;
+          grafik.InterpolationMode = InterpolationMode.Default;
+          grafik.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+          var codec = ImageCodecInfo.GetImageEncoders();
+          var eParams = new EncoderParameters(1);
+          eParams.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 85L);
+
+          grafik.DrawImage(originalImage, 0, 0, originalImage.Width, originalImage.Height);
+
+          _processedPhoto.Save(path, codec[imageType], eParams);
+
+          GC.Collect();
+        }
+        else
+        {
+          if (IsCrop != true)
+          {
+            float _OrjiRatio = (float)originalImage.Width / (float)originalImage.Height;
+
+            float _hedefRatio = (float)_targetWidth / (float)_targetHeight;
+
+            if (_OrjiRatio > _hedefRatio) //Widthe Göre
+            {
+              _lastWidth = _targetWidth;
+              _lastHeight = Convert.ToInt32(_targetWidth / _OrjiRatio);
+            }
+            else //heighte göre
+            {
+              _lastHeight = _targetHeight;
+              _lastWidth = Convert.ToInt32(_targetHeight * _OrjiRatio);
+            }
+
+            _processedPhoto = new Bitmap(_lastWidth, _lastHeight);
+            grafik = Graphics.FromImage(_processedPhoto);
+
+            grafik.SmoothingMode = SmoothingMode.HighQuality;
+            grafik.CompositingQuality = CompositingQuality.HighQuality;
+            grafik.InterpolationMode = InterpolationMode.Default;
+            grafik.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+            var codec = ImageCodecInfo.GetImageEncoders();
+            var eParams = new EncoderParameters(1);
+            eParams.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 85L);
+
+            grafik.DrawImage(originalImage, 0, 0, _lastWidth, _lastHeight);
+
+            _processedPhoto.Save(path, codec[imageType], eParams);
+
+            GC.Collect();
+          }
+          else
+          {
+            float _OrjiRatio = (float)originalImage.Width / (float)originalImage.Height;
+
+            float _hedefRatio = (float)_targetWidth / (float)_targetHeight;
+
+            if (_hedefRatio < _OrjiRatio) // heighte göre
+            {
+              _lastHeight = _targetHeight;
+
+              _lastWidth = Convert.ToInt32(_targetHeight * _OrjiRatio);
+            }
+            else // widthe göre
+            {
+              _lastWidth = _targetWidth;
+
+              _lastHeight = Convert.ToInt32(_targetWidth / _OrjiRatio);
+            }
+
+            _processedPhoto = new Bitmap(_lastWidth, _lastHeight);
+            grafik = Graphics.FromImage(_processedPhoto);
+
+            grafik.SmoothingMode = SmoothingMode.HighQuality;
+            grafik.CompositingQuality = CompositingQuality.HighQuality;
+            grafik.InterpolationMode = InterpolationMode.Default;
+            grafik.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+            var codec = ImageCodecInfo.GetImageEncoders();
+            var eParams = new EncoderParameters(1);
+            eParams.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 85L);
+
+            grafik.DrawImage(originalImage, 0, 0, _lastWidth, _lastHeight);
+
+            GC.Collect();
+
+            var _processedPhotoWidth = _processedPhoto.Width;
+
+            var _processedPhotoHeight = _processedPhoto.Height;
+
+            var _ortWidth = Convert.ToInt32((_processedPhoto.Width - _targetWidth) / 2);
+
+            var _ortHeight = Convert.ToInt32((_processedPhoto.Height - _targetHeight) / 2);
+
+            var sourceRectangle = new Rectangle(_ortWidth, _ortHeight, _targetWidth, _targetHeight);
+
+            if (destinationRectangle == null)
+            {
+              destinationRectangle = new Rectangle(Point.Empty, sourceRectangle.Size);
+            }
+
+            var croppedImage = new Bitmap(destinationRectangle.Value.Width, destinationRectangle.Value.Height);
+
+            using (var graphics = Graphics.FromImage(croppedImage))
+            {
+              graphics.DrawImage(_processedPhoto, destinationRectangle.Value, sourceRectangle, GraphicsUnit.Pixel);
+            }
+
+            croppedImage.Save(path, codec[imageType], eParams);
+
+            GC.Collect();
+          }
+        }
+      }
+      catch (Exception)
+      {
+        throw;
+      }
+    }
+     public static string GetUniqueKey(int maxSize)
+    {
+      char[] chars = new char[62];
+      chars =
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".ToCharArray();
+      byte[] data = new byte[1];
+      using (RNGCryptoServiceProvider crypto = new RNGCryptoServiceProvider())
+      {
+        crypto.GetNonZeroBytes(data);
+        data = new byte[maxSize];
+        crypto.GetNonZeroBytes(data);
+      }
+      StringBuilder result = new StringBuilder(maxSize);
+      foreach (byte b in data)
+      {
+        result.Append(chars[b % (chars.Length)]);
+      }
+      return result.ToString();
+    }
+     public static string PhotoTitle(string Title)
+    {
+      try
+      {
+        Title = Regex.Replace(Title, @"[ ]{2,}", "-");
+        Title = Regex.Replace(Title, @"(\|@|&|'|\(|\)|<|>|#|)", "").Replace("?", "").ToLower();
+
+        Title = Title.Replace("ç", "c").
+            Replace("ş", "s").
+            Replace("ğ", "g").
+            Replace("ı", "i").
+            Replace("ö", "o").
+            Replace("ü", "u").
+            Replace(" ", "-").Replace("+", "");
+      }
+      catch (Exception)
+      {
+      }
+
+      return Title;
     }
 
   }

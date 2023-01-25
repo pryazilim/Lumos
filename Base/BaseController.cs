@@ -8,7 +8,7 @@ using Azure.Core;
 using System.Web;
 using Lumos.Base;
 
-namespace Lumos.Bas
+namespace Lumos.Base
 {
   public class BaseController : Controller
   {
@@ -17,7 +17,7 @@ namespace Lumos.Bas
     {
       try
       {
-        var userLanguages = Request.UserLanguages;
+        // var userLanguages = Request.UserLanguages;
         var routes = RouteTable.Routes;
         // TODO:SOru-2
         var routeData = Request.Url.AbsolutePath;

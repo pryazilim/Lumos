@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Lumos.Areas.Admin.Models.BaseModel;
 using Lumos.Base;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Lumos.Areas.Admin.Controllers
 {
@@ -27,7 +28,7 @@ namespace Lumos.Areas.Admin.Controllers
 
       try
       {
-        var _id = System.Web.c.Current.Request["id"];
+        var _id = System.Web.HttpContext.Current.Request["id"];
         var _OrderBy = System.Web.HttpContext.Current.Request["OrderBy"];
         var _Type = System.Web.HttpContext.Current.Request["Type"];
 
@@ -182,7 +183,7 @@ namespace Lumos.Areas.Admin.Controllers
               {
                 try
                 {
-                  var filePath = Server.MapPath("~/UploadFile/Slider/" + data.PhotoPath);
+                  var filePath = Path.Combine("~/UploadFile/Slider/" + data.PhotoPath);
 
                   FileInfo File = new FileInfo(filePath);
 
@@ -202,7 +203,7 @@ namespace Lumos.Areas.Admin.Controllers
               {
                 try
                 {
-                  var filePath = Server.MapPath("~/UploadFile/Slider/" + data.PhotoPath);
+                  var filePath = Path.Combine("~/UploadFile/Slider/" + data.PhotoPath);
 
                   FileInfo File = new FileInfo(filePath);
 
@@ -238,7 +239,7 @@ namespace Lumos.Areas.Admin.Controllers
       }
       return Json(_result);
     }
-    [AuthorizationFilter(Page = "Slider")]
+    [AuthenticationGuardAttribute(Page = "Slider")]
     [Route("RemoveSlider"), HttpPost]
     public JsonResult RemoveSlider(long id)
     {
@@ -263,7 +264,7 @@ namespace Lumos.Areas.Admin.Controllers
 
             try
             {
-              var filePath = Server.MapPath("~/UploadFile/Slider/" + data.PhotoPath);
+              var filePath = Path.Combine("~/UploadFile/Slider/" + data.PhotoPath);
 
               FileInfo File = new FileInfo(filePath);
 
@@ -272,7 +273,7 @@ namespace Lumos.Areas.Admin.Controllers
                 File.Delete();
               }
 
-              var filePath2 = Server.MapPath("~/UploadFile/Slider/" + data.SecondPhoto);
+              var filePath2 = Path.Combine ("~/UploadFile/Slider/" + data.SecondPhoto);
 
               FileInfo File2 = new FileInfo(filePath2);
 

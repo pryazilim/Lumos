@@ -8,7 +8,7 @@ namespace Lumos.Areas.Admin.Models.BaseModel
 {
   public class LayoutModel : BaseController
   {
-    private List<string> _permissionList;
+    private List<string>? _permissionList;
 
     private List<string> PermissionList
     {

@@ -15,7 +15,7 @@ public class AuthenticationGuardAttribute : ActionFilterAttribute
     }
     else
     {
-      string? currentUser;
+      string currentUser;
 
       var currentUserValue = filterContext.HttpContext.Session.GetString("CurrentUser");
 
