@@ -62,7 +62,7 @@ namespace Lumos.Base
           {
             string jsonResponse = readStream.ReadToEnd();
             var data = JsonConvert.DeserializeObject<GeneralModel.CaptchaModel>(jsonResponse);
-            Valid = data.success;
+            Valid = data!.success;
           }
         }
         return Valid;
@@ -195,5 +195,330 @@ namespace Lumos.Base
       {
       }
     }
+
+    //  public static void ImportAdminCookie(string Username, long userID, string permission)
+    // {
+    //   var _date = DateTime.Now.AddDays(30);
+
+    //   HttpContext.Current.Response.Cookies.Add(new HttpCookie("__of") // ID
+    //   {
+    //     Expires = _date,
+    //     HttpOnly = true,
+    //     Value = CookieEncoder(userID.ToString())
+    //   });
+
+    //   HttpContext.Current.Response.Cookies.Add(new HttpCookie("__yb") // Username
+    //   {
+    //     Expires = _date,
+    //     HttpOnly = true,
+    //     Value = CookieEncoder(Username)
+    //   });
+    //   HttpContext.Current.Response.Cookies.Add(new HttpCookie("__ty") // Perm
+    //   {
+    //     Expires = _date,
+    //     HttpOnly = true,
+    //     Value = CookieEncoder(permission)
+    //   });
+    //   HttpContext.Current.Response.Cookies.Add(new HttpCookie("__ks") // CID
+    //   {
+    //     Expires = _date,
+    //     HttpOnly = true,
+    //     Value = VerifyCookieEncoder(userID.ToString())
+    //   });
+    //   HttpContext.Current.Response.Cookies.Add(new HttpCookie("__df") // CUsername
+    //   {
+    //     Expires = _date,
+    //     HttpOnly = true,
+    //     Value = VerifyCookieEncoder(Username)
+    //   });
+
+    //   HttpContext.Current.Response.Cookies.Add(new HttpCookie("__ug") // CPerm
+    //   {
+    //     Expires = _date,
+    //     HttpOnly = true,
+    //     Value = VerifyCookieEncoder(permission)
+    //   });
+    // }
+
+    //  public static void DeletaAdminCookie()
+    // {
+    //   var _date = DateTime.Now.AddDays(-1d);
+
+    //   HttpContext.Current.Response.Cookies.Clear();
+
+    //   HttpContext.Current.Response.Cookies.Add(new HttpCookie("__of")
+    //   {
+    //     Expires = _date,
+    //     HttpOnly = true,
+    //     Value = "-1"
+    //   });
+
+    //   HttpContext.Current.Response.Cookies.Add(new HttpCookie("__yb")
+    //   {
+    //     Expires = _date,
+    //     HttpOnly = true,
+    //     Value = "-1"
+    //   });
+
+    //   HttpContext.Current.Response.Cookies.Add(new HttpCookie("__ks")
+    //   {
+    //     Expires = _date,
+    //     HttpOnly = true,
+    //     Value = "-1"
+    //   });
+
+    //   HttpContext.Current.Response.Cookies.Add(new HttpCookie("__df")
+    //   {
+    //     Expires = _date,
+    //     HttpOnly = true,
+    //     Value = "-1"
+    //   });
+    //   HttpContext.Current.Response.Cookies.Add(new HttpCookie("__ty")
+    //   {
+    //     Expires = _date,
+    //     HttpOnly = true,
+    //     Value = "-1"
+    //   });
+
+    //   HttpContext.Current.Response.Cookies.Add(new HttpCookie("__ug")
+    //   {
+    //     Expires = _date,
+    //     HttpOnly = true,
+    //     Value = "-1"
+    //   });
+
+    //   HttpContext.Current.Session.Abandon();
+    // }
+    // public static void DeletaUserCookie()
+    // {
+
+
+    //   var _date = DateTime.Now.AddDays(-1d);
+
+    //   HttpContext.Current.Response.Cookies.Clear();
+
+
+    //   HttpContext.Current.Response.Cookies.Add(new HttpCookie("__rb")
+    //   {
+    //     Expires = _date,
+    //     HttpOnly = true,
+    //     Value = "-1"
+    //   });
+
+
+    //   HttpContext.Current.Response.Cookies.Add(new HttpCookie("__mm")
+    //   {
+    //     Expires = _date,
+    //     HttpOnly = true,
+    //     Value = "-1"
+    //   });
+
+    //   HttpContext.Current.Response.Cookies.Add(new HttpCookie("__ky")
+    //   {
+    //     Expires = _date,
+    //     HttpOnly = true,
+    //     Value = "-1"
+    //   });
+
+    //   HttpContext.Current.Response.Cookies.Add(new HttpCookie("__sb")
+    //   {
+    //     Expires = _date,
+    //     HttpOnly = true,
+    //     Value = "-1"
+    //   });
+
+    //   HttpContext.Current.Response.Cookies.Add(new HttpCookie("__gg")
+    //   {
+    //     Expires = _date,
+    //     HttpOnly = true,
+    //     Value = "-1"
+    //   });
+
+    //   HttpContext.Current.Response.Cookies.Add(new HttpCookie("__fo")
+    //   {
+    //     Expires = _date,
+    //     HttpOnly = true,
+    //     Value = "-1"
+    //   });
+
+    //   HttpContext.Current.Session.Abandon();
+    // }
+
+    public static void SetLangCookie(string lang)
+    {
+      var _date = DateTime.Now.AddDays(30);
+
+      // HttpContext.Current.Response.Cookies.Add(new HttpCookie("lang") // ID
+      // {
+      //   Expires = _date,
+      //   HttpOnly = true,
+      //   Value = lang
+      // });
+    }
+// TODO://soru
+    //  public static long AdminUserID()
+    // {
+    //   try
+    //   {
+    //     var idc = HttpContext.Current.Request.Cookies["__of"];
+    //     var usc = HttpContext.Current.Request.Cookies["__yb"];
+    //     var vidc = HttpContext.Current.Request.Cookies["__ks"];
+    //     var vusc = HttpContext.Current.Request.Cookies["__df"];
+
+    //     long _userId = Convert.ToInt64(CookieDecoder(idc.Value));
+
+    //     var UserArray = Statics.getAdminValues().Select(x => x.Id).ToList();
+
+    //     if (UserArray.Contains(Convert.ToInt32(_userId)))
+    //     {
+    //       if (idc.Expires < DateTime.Now)
+    //       {
+    //         if (_userId == Convert.ToInt64(VerifyCookieDecoder(vidc.Value)))
+    //         {
+    //           if (CookieDecoder(usc.Value) != VerifyCookieDecoder(vusc.Value))
+    //             return -1;
+    //         }
+    //         else
+    //         {
+    //           return -1;
+    //         }
+    //         return _userId;
+    //       }
+    //     }
+    //     else
+    //     {
+    //       return -1;
+    //     }
+
+    //     return -1;
+    //   }
+    //   catch (Exception)
+    //   {
+    //     return -1;
+    //   }
+    // }
+
+    // public static string AdminUsername()
+    // {
+    //   try
+    //   {
+    //     var usc = HttpContext.Current.Request.Cookies["__yb"];
+    //     var vusc = HttpContext.Current.Request.Cookies["__df"];
+    //     string _un = CookieDecoder(usc.Value);
+
+    //     if (_un == VerifyCookieDecoder(vusc.Value))
+    //       return _un;
+    //     else
+    //       return string.Empty;
+    //   }
+    //   catch (Exception)
+    //   {
+    //     return string.Empty;
+    //   }
+    // }
+
+     public static string CookieEncoder(string text)
+    {
+      var _result = string.Empty;
+      var _rnd = new Random();
+
+      for (int i = 0; i < text.Length; i++)
+      {
+        string asd = text[i].ToString();
+        var sdfg = CookieKey[_rnd.Next(0, CookieKey.Length - 1)].ToString();
+        _result += text[i].ToString() + CookieKey[_rnd.Next(0, CookieKey.Length - 1)].ToString();
+      }
+      return encryptWithKey(_result);
+    }
+
+    public static string CookieDecoder(string text)
+    {
+      var _result = string.Empty;
+
+      text = decryptWithKey(text);
+
+      for (int i = 0; i < text.Length; i += 2)
+      {
+        _result += text[i].ToString();
+      }
+      return _result;
+    }
+
+    private static string decryptWithKey(string value)
+    {
+      byte[] cipherTextBytes = Convert.FromBase64String(value);
+      using (PasswordDeriveBytes password = new PasswordDeriveBytes(PASSWORD, null))
+      {
+        byte[] keyBytes = password.GetBytes(KEY_SIZE / 8);
+        using (RijndaelManaged symmetricKey = new RijndaelManaged())
+        {
+          symmetricKey.Mode = CipherMode.CBC;
+          using (ICryptoTransform decryptor = symmetricKey.CreateDecryptor(keyBytes, initVectorBytes))
+          {
+            using (MemoryStream memoryStream = new MemoryStream(cipherTextBytes))
+            {
+              using (CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
+              {
+                byte[] plainTextBytes = new byte[cipherTextBytes.Length];
+                int decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
+                return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount);
+              }
+            }
+          }
+        }
+      }
+    }
+
+     private static string encryptWithKey(string value)
+    {
+      byte[] plainTextBytes = Encoding.UTF8.GetBytes(value);
+      using (PasswordDeriveBytes password = new PasswordDeriveBytes(PASSWORD, null))
+      {
+        byte[] keyBytes = password.GetBytes(KEY_SIZE / 8);
+        using (RijndaelManaged symmetricKey = new RijndaelManaged())
+        {
+          symmetricKey.Mode = CipherMode.CBC;
+          using (ICryptoTransform encryptor = symmetricKey.CreateEncryptor(keyBytes, initVectorBytes))
+          {
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+              using (CryptoStream cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
+              {
+                cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
+                cryptoStream.FlushFinalBlock();
+                byte[] cipherTextBytes = memoryStream.ToArray();
+                return Convert.ToBase64String(cipherTextBytes);
+              }
+            }
+          }
+        }
+      }
+    }
+
+     public static string VerifyCookieDecoder(string text)
+    {
+      var _result = string.Empty;
+
+      text = decryptWithKey(text);
+
+      for (int i = 2; i < text.Length; i += 3)
+      {
+        _result += text[i].ToString();
+      }
+      return _result;
+    }
+
+    public static string VerifyCookieEncoder(string text)
+    {
+      var _result = string.Empty;
+      var _rnd = new Random();
+
+      for (int i = 0; i < text.Length; i++)
+      {
+        _result += CookieKey[_rnd.Next(0, CookieKey.Length - 1)].ToString() + CookieKey[_rnd.Next(0, CookieKey.Length - 1)].ToString() + text[i].ToString();
+      }
+      return encryptWithKey(_result);
+    }
+
   }
 }

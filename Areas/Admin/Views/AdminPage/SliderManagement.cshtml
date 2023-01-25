@@ -1,3 +1,4 @@
+@model Lumos.Areas.Admin.Models.ViewModel.SliderModel
 @{
   ViewBag.Title = "SliderManagement";
   Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
@@ -34,17 +35,18 @@
     <div class="col-md-12 col-sm-12 p-0 bg-white rounded-1 tab-content">
       <div class="px-24 py-24">
         <h1 class="text-20 line-32 mb-16">Slider İçeriği</h1>
-        @* <ul class="nav nav-tabs tab-nav-right pb-14" role="tablist">
-
+        <ul class="nav nav-tabs tab-nav-right pb-14" role="tablist">
+          @for (int i = 0; i < Model.LanguageList.Count; i++)
+          {
             <li role="presentation" class="@(i == 0 ? "active" : "") TabMenu"><a href="#@Model.LanguageList[i].LanguageName" data-toggle="tab"> @Model.LanguageList[i].DisplayName</a></li>
-
-        </ul> *@
+          }
+        </ul>
         <form class="dropzone border type-3-none" pr-name="Logo"></form>
         <div class="grid mb-16">
           <label class="text-font-600 text-13 text-secondary" for="title">Görüntülenme Sırası<span class="text-state text-font-700 ml-4">*</span></label>
           <input class="text-dark text-font-500 text-12 rounded py-14 px-16 border-primary outline-none input-focus input-placeholder-primary  flex-auto mb-12 h-40" id="orderby" type="number" pr-name="OrderBy">
         </div>
-        @* @for (int i = 0; i < Model.LanguageList.Count; i++)
+        @for (int i = 0; i < Model.LanguageList.Count; i++)
         {
           <div role="tabpanel" class="tab-pane fade@(i==0 ? "in active" : "")" id="@Model.LanguageList[i].LanguageName">
             <div class="grid mb-16" id="type4Title">
@@ -66,7 +68,7 @@
               </div>
             </div>
           </div>
-        } *@
+        }
       </div>
     </div>
   </div>
