@@ -421,7 +421,7 @@ namespace Lumos.Base
     public static void SetLangCookie(string lang)
     {
       var _date = DateTime.Now.AddDays(30);
-
+      // TODO://soru
       // HttpContext.Current.Response.Cookies.Add(new HttpCookie("lang") // ID
       // {
       //   Expires = _date,
@@ -429,67 +429,68 @@ namespace Lumos.Base
       //   Value = lang
       // });
     }
-// TODO://soru
-    //  public static long AdminUserID()
-    // {
-    //   try
-    //   {
-    //     var idc = HttpContext.Current.Request.Cookies["__of"];
-    //     var usc = HttpContext.Current.Request.Cookies["__yb"];
-    //     var vidc = HttpContext.Current.Request.Cookies["__ks"];
-    //     var vusc = HttpContext.Current.Request.Cookies["__df"];
 
-    //     long _userId = Convert.ToInt64(CookieDecoder(idc.Value));
+     public static long AdminUserID()
+    {
+      // try
+      // {
+      //   var idc = HttpContext.Current.Request.Cookies["__of"];
+      //   var usc = HttpContext.Current.Request.Cookies["__yb"];
+      //   var vidc = HttpContext.Current.Request.Cookies["__ks"];
+      //   var vusc = HttpContext.Current.Request.Cookies["__df"];
 
-    //     var UserArray = Statics.getAdminValues().Select(x => x.Id).ToList();
+      //   long _userId = Convert.ToInt64(CookieDecoder(idc.Value));
 
-    //     if (UserArray.Contains(Convert.ToInt32(_userId)))
-    //     {
-    //       if (idc.Expires < DateTime.Now)
-    //       {
-    //         if (_userId == Convert.ToInt64(VerifyCookieDecoder(vidc.Value)))
-    //         {
-    //           if (CookieDecoder(usc.Value) != VerifyCookieDecoder(vusc.Value))
-    //             return -1;
-    //         }
-    //         else
-    //         {
-    //           return -1;
-    //         }
-    //         return _userId;
-    //       }
-    //     }
-    //     else
-    //     {
-    //       return -1;
-    //     }
+      //   var UserArray = Statics.getAdminValues().Select(x => x.Id).ToList();
 
-    //     return -1;
-    //   }
-    //   catch (Exception)
-    //   {
-    //     return -1;
-    //   }
-    // }
+      //   if (UserArray.Contains(Convert.ToInt32(_userId)))
+      //   {
+      //     if (idc.Expires < DateTime.Now)
+      //     {
+      //       if (_userId == Convert.ToInt64(VerifyCookieDecoder(vidc.Value)))
+      //       {
+      //         if (CookieDecoder(usc.Value) != VerifyCookieDecoder(vusc.Value))
+      //           return -1;
+      //       }
+      //       else
+      //       {
+      //         return -1;
+      //       }
+      //       return _userId;
+      //     }
+      //   }
+      //   else
+      //   {
+      //     return -1;
+      //   }
 
-    // public static string AdminUsername()
-    // {
-    //   try
-    //   {
-    //     var usc = HttpContext.Current.Request.Cookies["__yb"];
-    //     var vusc = HttpContext.Current.Request.Cookies["__df"];
-    //     string _un = CookieDecoder(usc.Value);
+         return -1;
+      // }
+      // catch (Exception)
+      // {
+      //   return -1;
+      // }
+    }
 
-    //     if (_un == VerifyCookieDecoder(vusc.Value))
-    //       return _un;
-    //     else
-    //       return string.Empty;
-    //   }
-    //   catch (Exception)
-    //   {
-    //     return string.Empty;
-    //   }
-    // }
+    public static string AdminUsername()
+    {
+      try
+      {
+        // var usc = HttpContext.Current.Request.Cookies["__yb"];
+        // var vusc = HttpContext.Current.Request.Cookies["__df"];
+        // string _un = CookieDecoder(usc.Value);
+
+        // if (_un == VerifyCookieDecoder(vusc.Value))
+        //   return _un;
+        // else
+        //   return string.Empty;
+        return string.Empty;
+      }
+      catch (Exception)
+      {
+        return string.Empty;
+      }
+    }
      public static string CookieEncoder(string text)
     {
       var _result = string.Empty;

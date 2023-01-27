@@ -191,8 +191,8 @@
           false);
         return xhr;
       },
-      url: "/admin/ajax/SliderProcess",
-      type: "POST",
+      url: "@Url.Action("SliderManagement"),
+      type: "GET",
       processData: false,
       contentType: false,
       data: Adddata,
@@ -229,3 +229,4 @@
     }
   });
 </script>
+

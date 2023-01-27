@@ -1,6 +1,6 @@
 public class Result
   {
-    public string? Message { get; set; }
+    public string Message { get; set; }
     public bool Success { get; set; }
     public int? Statue { get; set; }
 
@@ -36,7 +36,7 @@ public class Result
   {
     private List<T> resultList = new List<T>();
 
-    public T? ResultObj { get; set; }
+    public T ResultObj { get; set; }
 
     public List<T> ResultList
     {

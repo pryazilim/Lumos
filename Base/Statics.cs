@@ -8,11 +8,11 @@ namespace Lumos.Base
 {
   public static class Statics
   {
-    private static List<AdminUser>? _AdmindbData;
-    private static List<Layout>? _LayoutdbData;
-    private static List<Language>? _LanguagedbData;
-    private static List<Seo>? _SeodbData;
-    private static List<SeoLanguage>? _SeoLanguagedbData;
+    private static List<AdminUser> _AdmindbData;
+    private static List<Layout> _LayoutdbData;
+    private static List<Language> _LanguagedbData;
+    private static List<Seo> _SeodbData;
+    private static List<SeoLanguage> _SeoLanguagedbData;
 
     //private static List<CategoryProduct> _CategoryProductdbData;
     //private static List<CategoryProductLanguage> _CategoryProductLanguagedbData;
@@ -20,10 +20,10 @@ namespace Lumos.Base
 
     //private static List<Models.Site.GeneralModels.CategoryProductModel> _CategoryProductInfoValues;
 
-    private static List<Areas.Admin.Models.GeneralModels.AdminModel>? _AdminInfoValues;
-    private static Models.GeneralModels.LayoutDataModel? _LayoutInfoValues;
-    private static List<Areas.Admin.Models.BaseModel.LanguageModel>? _LanguageInfoValues;
-    private static Models.GeneralModels.SeoModel? _SeoInfoValues;
+    private static List<Areas.Admin.Models.GeneralModels.AdminModel> _AdminInfoValues;
+    private static Models.GeneralModels.LayoutDataModel _LayoutInfoValues;
+    private static List<Areas.Admin.Models.BaseModel.LanguageModel> _LanguageInfoValues;
+    private static Models.GeneralModels.SeoModel _SeoInfoValues;
 
     public static List<Layout> LayoutdbData
     {

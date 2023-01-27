@@ -7,7 +7,7 @@ namespace Lumos.Areas.Admin.Models.ViewModel
 {
   public class SliderModel : BaseModel.LayoutModel
   {
-    public List<GeneralModels.SliderModel>? SliderList { get; set; }
-    public GeneralModels.SliderModel? SliderMain { get; set; }
+    public List<GeneralModels.SliderModel> SliderList { get; set; }
+    public GeneralModels.SliderModel SliderMain { get; set; }
   }
 }
