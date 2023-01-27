@@ -53,7 +53,7 @@
 <script>
   $("#PrContact").click(function () {
     $(this).attr("disabled", "disabled");
-    var data = {
+    const data = {
       T: $(".topic .current").text(),
       M: $("#message").val(),
     };
