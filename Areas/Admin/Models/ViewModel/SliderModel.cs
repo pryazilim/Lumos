@@ -9,5 +9,7 @@ namespace Lumos.Areas.Admin.Models.ViewModel
   {
     public List<GeneralModels.SliderModel> SliderList { get; set; }
     public GeneralModels.SliderModel SliderMain { get; set; }
+
+
   }
 }

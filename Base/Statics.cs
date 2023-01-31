@@ -61,7 +61,7 @@ namespace Lumos.Base
         {
           var db = new DataContext();
 
-          _LanguagedbData = db.Language!.ToList();
+          _LanguagedbData = db.Language.ToList();
         }
         return _LanguagedbData;
       }

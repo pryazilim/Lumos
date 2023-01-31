@@ -32,7 +32,8 @@ public class AdminPageController : Controller
   [AuthenticationGuard(Page = "Index")]
   public IActionResult SliderManagement()
   {
-    return View();
+    var mdl = new Areas.Admin.Models.ViewModel.SliderModel();
+    return View(mdl);
   }
 
   [HttpPost]

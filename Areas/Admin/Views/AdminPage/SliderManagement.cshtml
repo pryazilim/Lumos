@@ -1,7 +1,6 @@
 @model Lumos.Areas.Admin.Models.ViewModel.SliderModel
 @{
   ViewBag.Title = "SliderManagement";
-  Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
 }
 
 <div id="saveupdatesliderform">
@@ -12,15 +11,15 @@
         <h1 class="text-20 line-32 mb-16">Slider Tipi</h1>
         <div class="flex flex-wrap-mobile gap-2 click">
           <div class="col-md-2 col-sm-12 p-0 active-text text-center w-47-h emirhan " id="type1" pr-name="Type" data-mert="1">
-            <div class="border-secondry rounded-8 cursor-pointer active-border h-126 " style="background: url('../../Content/Admin/images/slider-tip-1.jpg')no-repeat; background-size: cover !important; background-position: center !important;"></div>
+            <div class="border-secondry rounded-8 cursor-pointer active-border h-126 " style="background: url('/img-content/admin/icon/slider-tip-1.jpg')no-repeat; background-size: cover !important; background-position: center !important;"></div>
             <h2 class="text-font-500 text-12 line-h16 text-secondary mt-7 text-dark">Tip 1 (Yazı Solda + Resim Sağda)</h2>
           </div>
           <div class="col-md-2 col-sm-12 p-0  text-center w-47-h emirhan " id="type2" pr-name="Type" data-mert="2">
-            <div class="border-secondry rounded-8 cursor-pointer h-126 opacitys" style="background: url('../../Content/Admin/images/slider-tip-2.jpg')no-repeat; background-size: cover !important; background-position: center !important;"></div>
+            <div class="border-secondry rounded-8 cursor-pointer h-126 opacitys" style="background: url('/img-content/admin/icon/slider-tip-2.jpg')no-repeat; background-size: cover !important; background-position: center !important;"></div>
             <h2 class="text-font-500 text-12 line-h16 text-secondary mt-7">Tip 2 (Yazı Sağda  + Resim Solda)</h2>
           </div>
           <div class="col-md-2 col-sm-12 p-0  text-center w-47-h emirhan " id="type3" pr-name="Type" data-mert="3">
-            <div class="border-secondry rounded-8 cursor-pointer h-126 opacitys" style="background: url('../../Content/Admin/images/slider-tip-3.jpg')no-repeat; background-size: cover !important; background-position: center !important;"></div>
+            <div class="border-secondry rounded-8 cursor-pointer h-126 opacitys" style="background: url('/img-content/admin/icon/slider-tip-3.jpg')no-repeat; background-size: cover !important; background-position: center !important;"></div>
             <h2 class="text-font-500 text-12 line-h16 text-secondary mt-7">Tip 3 (Başlık + Açıklama)</h2>
           </div>
           @*<div class="col-md-2 col-sm-12 p-0  text-center w-47-h emirhan " id="" pr-name="Type"  data-mert="4">
@@ -82,8 +81,9 @@
   </div>
 </div>
 
-<link href="~/Content/Admin/css/dropzone.css" rel="stylesheet" />
-<script src="~/Content/Admin/scripts/admin/js/dropzone.js"></script>
+<link href="/css/admin/dropzone.css" rel="stylesheet" />
+<script src="/js/Admin/dropzone.js"></script>
+
 <script>
   $(document).ready(function () {
     $('.js-example-basic-single').select2();
@@ -150,8 +150,8 @@
     $(".PostLoader").show();
 
     // instead of making changes to the content of the Titletr and Titleen fields, HTMLEncode content and HTMLDecode on the API side
-    var Titletr = StringRegex(CKEDITOR.instances.Titletr.getData());
-    var Titleen = StringRegex(CKEDITOR.instances.Titleen.getData());
+    var Titletr = (CKEDITOR.instances.Titletr.getData());
+    var Titleen = (CKEDITOR.instances.Titleen.getData());
 
     //Adddata.append("CategoryId", $('#Categoryid').val());
     Adddata.append("OrderBy", $("#orderby").val());

@@ -1,5 +1,4 @@
 using Lumos.Base;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Lumos.Areas.Admin.Models.BaseModel
 {
