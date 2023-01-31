@@ -1,108 +1,44 @@
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Mvc;
-using Azure.Core;
-using System.Web;
-using Lumos.Base;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Lumos.Base
 {
   public class BaseController : Controller
   {
+    public override void OnActionExecuting(ActionExecutingContext filterContext)
+    {
+      var languageCode = HttpContext.GetRouteData().Values["languageCode"].ToString();
 
-    // protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
-    // {
-    //   try
-    //   {
-    //     // var userLanguages = Request.UserLanguages;
-    //     var routes = RouteTable.Routes;
-    //     // TODO:SOru-2
-    //     var routeData = Request.Url.AbsolutePath;
-    //     CultureInfo cultureInfo = null;
-    //     var language = "";
+      CultureInfo cultureInfo = null;
 
-    //     if (routeData.Length < 3)
-    //       language = "";
-    //     else if (routeData.Length == 3)
-    //       language = routeData[1].ToString() + routeData[2].ToString();
-    //     else if (routeData.Length > 3 && routeData[3] == '/')
-    //       language = routeData[1].ToString() + routeData[2].ToString();
-    //     else
-    //       language = "";
+      try
+      {
+        if (languageCode != "tr" && languageCode != "en")
+        {
+          languageCode = Request.GetTypedHeaders()
+                                .AcceptLanguage
+                                ?.OrderByDescending(x => x.Quality ?? 1)
+                                .Where(e => e.Value.ToString() == "tr" || e.Value.ToString() == "en")
+                                .Select(x => x.Value.ToString())
+                                .FirstOrDefault() ?? "tr";
+        }
+      }
+      catch (Exception)
+      {
+        languageCode = "tr";
+      }
 
+       Functions.SetLangCookie(HttpContext, languageCode);
 
-    //     try
-    //     {
-    //       if (language == "tr" || language == "en")
-    //       {
-    //         Functions.SetLangCookie(language);
-    //         cultureInfo = new CultureInfo(language);
-    //       }
-    //       else
-    //       {
-    //         //var langc = Functions.GetLangCookie();
-    //         //if (!string.IsNullOrWhiteSpace(langc))
-    //         //{
-    //         //    cultureInfo = new CultureInfo(langc);
+      cultureInfo = new CultureInfo(languageCode);
 
-    //         //}
-    //         //else
-    //         //{
-    //         //    if (userLanguages.Count() > 0)
-    //         //    {
-    //         //        try
-    //         //        {
-    //         //            var userLanguage = userLanguages[0][0].ToString() + userLanguages[0][1].ToString();
-    //         //            if (userLanguage == "tr" || userLanguage == "en" /*|| userLanguage == "de")
-    //         //            {
-    //         //                Functions.SetLangCookie(userLanguage);
-    //         //                cultureInfo = new CultureInfo(userLanguage);
-    //         //            }
-    //         //            else
-    //         //            {
-    //         //                Functions.SetLangCookie("tr");
-    //         //                cultureInfo = new CultureInfo("tr");
-    //         //            }
-    //         //        }
-    //         //        catch (CultureNotFoundException)
-    //         //        {
-    //         //            Functions.SetLangCookie("tr");
-    //         //            cultureInfo = new CultureInfo("tr");
-    //         //        }
-    //         //    }
-    //         //    else
-    //         //    {
-    //         Functions.SetLangCookie("tr");
-    //         cultureInfo = new CultureInfo("tr");
-    //         //        }
-    //         //    }
+      Thread.CurrentThread.CurrentCulture = cultureInfo;
+      Thread.CurrentThread.CurrentUICulture = cultureInfo;
 
-    //         //}
-    //       }
-    //     }
-    //     catch (Exception)
-    //     {
-    //       Functions.SetLangCookie("tr");
-    //       cultureInfo = new CultureInfo("tr");
-    //     }
+      ViewBag.UserLanguage = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
 
-    //     System.Threading.Thread.CurrentThread.CurrentCulture = cultureInfo;
-    //     System.Threading.Thread.CurrentThread.CurrentUICulture = cultureInfo;
-    //   }
-    //   catch
-    //   {
-
-    //   }
-
-    //   return BeginExecuteCore(callback, state);
-    // }
-    // protected override void OnActionExecuting(ActionExecutingContext filterContext)
-    // {
-    //   ViewBag.UserLanguage = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
-    //   base.OnActionExecuting(filterContext);
-    // }
+      base.OnActionExecuting(filterContext);
+    }
   }
 }

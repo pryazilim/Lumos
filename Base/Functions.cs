@@ -1,20 +1,13 @@
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using System.Globalization;
-using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using Microsoft.AspNetCore.Mvc;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json;
 using System.Text.RegularExpressions;
-using System.Threading;
-using System.Web;
 
 namespace Lumos.Base
 {
@@ -61,7 +54,7 @@ namespace Lumos.Base
           using (var readStream = new StreamReader(wResponse.GetResponseStream()))
           {
             string jsonResponse = readStream.ReadToEnd();
-            var data = JsonConvert.DeserializeObject<GeneralModel.CaptchaModel>(jsonResponse);
+            var data = JsonSerializer.Deserialize<GeneralModel.CaptchaModel>(jsonResponse);
             Valid = data!.success;
           }
         }
@@ -418,73 +411,36 @@ namespace Lumos.Base
     //   HttpContext.Current.Session.Abandon();
     // }
 
-    public static void SetLangCookie(string lang)
+    public static void SetLangCookie(HttpContext httpContext, string lang)
     {
-      var _date = DateTime.Now.AddDays(30);
-      // TODO://soru
-      // HttpContext.Current.Response.Cookies.Add(new HttpCookie("lang") // ID
-      // {
-      //   Expires = _date,
-      //   HttpOnly = true,
-      //   Value = lang
-      // });
+      httpContext.Response.Cookies.Append("lang", lang, new CookieOptions
+      {
+        Expires = DateTime.Now.AddDays(30),
+        HttpOnly = false
+      });
     }
 
-     public static long AdminUserID()
+    public static long AdminUserID(HttpContext httpContext)
     {
-      // try
-      // {
-      //   var idc = HttpContext.Current.Request.Cookies["__of"];
-      //   var usc = HttpContext.Current.Request.Cookies["__yb"];
-      //   var vidc = HttpContext.Current.Request.Cookies["__ks"];
-      //   var vusc = HttpContext.Current.Request.Cookies["__df"];
+      var idc = httpContext.Request.Cookies["__of"];
 
-      //   long _userId = Convert.ToInt64(CookieDecoder(idc.Value));
+      var _userId = Convert.ToInt32(CookieDecoder(idc));
 
-      //   var UserArray = Statics.getAdminValues().Select(x => x.Id).ToList();
-
-      //   if (UserArray.Contains(Convert.ToInt32(_userId)))
-      //   {
-      //     if (idc.Expires < DateTime.Now)
-      //     {
-      //       if (_userId == Convert.ToInt64(VerifyCookieDecoder(vidc.Value)))
-      //       {
-      //         if (CookieDecoder(usc.Value) != VerifyCookieDecoder(vusc.Value))
-      //           return -1;
-      //       }
-      //       else
-      //       {
-      //         return -1;
-      //       }
-      //       return _userId;
-      //     }
-      //   }
-      //   else
-      //   {
-      //     return -1;
-      //   }
-
-         return -1;
-      // }
-      // catch (Exception)
-      // {
-      //   return -1;
-      // }
+      return Statics.getAdminValues().FirstOrDefault(e => e.Id == _userId) == null ? -1 : _userId;
     }
 
-    public static string AdminUsername()
+    public static string AdminUsername(HttpContext httpContext)
     {
       try
       {
-        // var usc = HttpContext.Current.Request.Cookies["__yb"];
-        // var vusc = HttpContext.Current.Request.Cookies["__df"];
-        // string _un = CookieDecoder(usc.Value);
+        var usc = httpContext.Request.Cookies["__yb"];
+        var vusc = httpContext.Request.Cookies["__df"];
+        string _un = CookieDecoder(usc);
 
-        // if (_un == VerifyCookieDecoder(vusc.Value))
-        //   return _un;
-        // else
-        //   return string.Empty;
-        return string.Empty;
+        if (_un == VerifyCookieDecoder(vusc))
+          return _un;
+        else
+          return string.Empty;
       }
       catch (Exception)
       {
@@ -522,7 +478,7 @@ namespace Lumos.Base
       using (PasswordDeriveBytes password = new PasswordDeriveBytes(PASSWORD, null))
       {
         byte[] keyBytes = password.GetBytes(KEY_SIZE / 8);
-        using (RijndaelManaged symmetricKey = new RijndaelManaged())
+        using (var symmetricKey = Aes.Create())
         {
           symmetricKey.Mode = CipherMode.CBC;
           using (ICryptoTransform decryptor = symmetricKey.CreateDecryptor(keyBytes, initVectorBytes))
@@ -546,7 +502,7 @@ namespace Lumos.Base
       using (PasswordDeriveBytes password = new PasswordDeriveBytes(PASSWORD, null))
       {
         byte[] keyBytes = password.GetBytes(KEY_SIZE / 8);
-        using (RijndaelManaged symmetricKey = new RijndaelManaged())
+        using (var symmetricKey = Aes.Create())
         {
           symmetricKey.Mode = CipherMode.CBC;
           using (ICryptoTransform encryptor = symmetricKey.CreateEncryptor(keyBytes, initVectorBytes))
@@ -595,6 +551,7 @@ namespace Lumos.Base
 
       int _lastWidth = 0, _lastHeight = 0;
 
+      // 274, File Orientation
       if (Array.IndexOf(originalImage.PropertyIdList, 274) > -1)
       {
         var orientation = (int)originalImage.GetPropertyItem(274).Value[0];
@@ -642,6 +599,7 @@ namespace Lumos.Base
           grafik.PixelOffsetMode = PixelOffsetMode.HighQuality;
 
           var codec = ImageCodecInfo.GetImageEncoders();
+          Console.WriteLine(codec[imageType]);
           var eParams = new EncoderParameters(1);
           eParams.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 85L);
 
@@ -799,3 +757,4 @@ namespace Lumos.Base
 
   }
 }
+

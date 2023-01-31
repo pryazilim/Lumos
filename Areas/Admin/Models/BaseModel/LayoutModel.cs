@@ -1,8 +1,5 @@
 using Lumos.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Lumos.Areas.Admin.Models.BaseModel
 {
@@ -17,7 +14,7 @@ namespace Lumos.Areas.Admin.Models.BaseModel
         if (_permissionList == null)
         {
           var list = Statics.getAdminValues();
-          _permissionList = list.Where(x => x.Id == Functions.AdminUserID()).Select(x => x.PermissionList).FirstOrDefault();
+          _permissionList = list.Where(x => x.Id == Functions.AdminUserID(HttpContext)).Select(x => x.PermissionList).FirstOrDefault();
         }
         return _permissionList;
       }
@@ -37,7 +34,7 @@ namespace Lumos.Areas.Admin.Models.BaseModel
       get
       {
         if (string.IsNullOrWhiteSpace(username))
-          username = Functions.AdminUsername();
+          username = Functions.AdminUsername(HttpContext);
         return username;
       }
     }
