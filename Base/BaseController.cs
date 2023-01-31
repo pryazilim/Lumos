@@ -29,7 +29,7 @@ namespace Lumos.Base
         languageCode = "tr";
       }
 
-      Functions.SetLangCookie(HttpContext, languageCode);
+       Functions.SetLangCookie(HttpContext, languageCode);
 
       cultureInfo = new CultureInfo(languageCode);
 

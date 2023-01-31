@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Lumos.Areas.Admin.Models.BaseModel
 {
-  public class LayoutModel : Controller
+  public class LayoutModel : BaseController
   {
     private List<string> _permissionList;
 
