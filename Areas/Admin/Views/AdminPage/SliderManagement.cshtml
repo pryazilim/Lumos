@@ -10,19 +10,19 @@
       <div class="px-24 py-24">
         <h1 class="text-20 line-32 mb-16">Slider Tipi</h1>
         <div class="flex flex-wrap-mobile gap-2 click">
-          <div class="col-md-2 col-sm-12 p-0 active-text text-center w-47-h emirhan " id="type1" pr-name="Type" data-mert="1">
+          <div class="col-md-2 col-sm-12 p-0 active-text text-center emirhan " id="type1" pr-name="Type" data-mert="1">
             <div class="border-secondry rounded-8 cursor-pointer active-border h-126 " style="background: url('/img-content/admin/icon/slider-tip-1.jpg')no-repeat; background-size: cover !important; background-position: center !important;"></div>
             <h2 class="text-font-500 text-12 line-h16 text-secondary mt-7 text-dark">Tip 1 (Yazı Solda + Resim Sağda)</h2>
           </div>
-          <div class="col-md-2 col-sm-12 p-0  text-center w-47-h emirhan " id="type2" pr-name="Type" data-mert="2">
+          <div class="col-md-2 col-sm-12 p-0  text-center emirhan " id="type2" pr-name="Type" data-mert="2">
             <div class="border-secondry rounded-8 cursor-pointer h-126 opacitys" style="background: url('/img-content/admin/icon/slider-tip-2.jpg')no-repeat; background-size: cover !important; background-position: center !important;"></div>
             <h2 class="text-font-500 text-12 line-h16 text-secondary mt-7">Tip 2 (Yazı Sağda  + Resim Solda)</h2>
           </div>
-          <div class="col-md-2 col-sm-12 p-0  text-center w-47-h emirhan " id="type3" pr-name="Type" data-mert="3">
+          <div class="col-md-2 col-sm-12 p-0  text-center emirhan " id="type3" pr-name="Type" data-mert="3">
             <div class="border-secondry rounded-8 cursor-pointer h-126 opacitys" style="background: url('/img-content/admin/icon/slider-tip-3.jpg')no-repeat; background-size: cover !important; background-position: center !important;"></div>
             <h2 class="text-font-500 text-12 line-h16 text-secondary mt-7">Tip 3 (Başlık + Açıklama)</h2>
           </div>
-          @*<div class="col-md-2 col-sm-12 p-0  text-center w-47-h emirhan " id="" pr-name="Type"  data-mert="4">
+          @*<div class="col-md-2 col-sm-12 p-0  text-center emirhan " id="" pr-name="Type"  data-mert="4">
               <div class="border-secondry rounded-8 cursor-pointer h-126 opacitys" style="background: url('../../Content/Admin/images/slider-tip-4.jpg')no-repeat; background-size: cover !important; background-position: center !important;"></div>
               <h2 class="text-font-500 text-12 line-h16 text-secondary mt-7">Tip 4 (Yalnızca Görsel)</h2>
             </div>*@
@@ -40,9 +40,9 @@
             <li role="presentation" class="@(i == 0 ? "active" : "") TabMenu"><a href="#@Model.LanguageList[i].LanguageName" data-toggle="tab"> @Model.LanguageList[i].DisplayName</a></li>
           }
         </ul>
-        <form class="dropzone border type-3-none" pr-name="Logo"></form>
+        <form class="dropzone border type-3-none" id="dropzone" pr-name="Logo"></form>
         <div class="grid mb-16">
-          <label class="text-font-600 text-13 text-secondary" for="title">Görüntülenme Sırası<span class="text-state text-font-700 ml-4">*</span></label>
+          <label class="text-font-600 text-13 text-secondary" for="orderby">Görüntülenme Sırası<span class="text-state text-font-700 ml-4">*</span></label>
           <input class="text-dark text-font-500 text-12 rounded py-14 px-16 border-primary outline-none input-focus input-placeholder-primary  flex-auto mb-12 h-40" id="orderby" type="number" pr-name="OrderBy">
         </div>
         @for (int i = 0; i < Model.LanguageList.Count; i++)
@@ -50,7 +50,8 @@
           <div role="tabpanel" class="tab-pane fade@(i==0 ? "in active" : "")" id="@Model.LanguageList[i].LanguageName">
             <div class="grid mb-16" id="type4Title">
               <label class="text-font-600 text-13 text-secondary" for="title">Slider Başlığı<span class="text-state text-font-700 ml-4">*</span></label>
-              <textarea type="ckeditor" class="d-none " id="Title@(Model.LanguageList[i].LanguageName)"></textarea>
+              <div id="toolbar-container"></div>
+              <div class="generalCkeditorStyle" id="Title@(Model.LanguageList[i].LanguageName)"></div>
             </div>
             <div class="grid mb-16" id="type2Description">
               <label class="text-font-600 text-13 text-secondary" for="undertitle">Alt Başlık (Açıklama)<span class="text-state text-font-700 ml-4">*</span></label>
@@ -81,21 +82,36 @@
   </div>
 </div>
 
-<link href="/css/admin/dropzone.css" rel="stylesheet" />
-<script src="/js/Admin/dropzone.js"></script>
-
+<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css"  type="text/css" />
+<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js" asp-append-version="true"></script>
 <script>
-  $(document).ready(function () {
-    $('.js-example-basic-single').select2();
-  });
+   DecoupledEditor
+        .create( document.querySelector( '#Titletr' ) )
+        .then( editor => {
+            const toolbarContainer = document.querySelector( '#toolbar-container' );
 
-  $(function () {
-    CKEDITOR.replace('Titletr', { allowedContent: 'p b i ol ul li;' });
-    CKEDITOR.replace('Titleen', { allowedContent: 'p b i ol ul li;' });
-  });
+            toolbarContainer.appendChild( editor.ui.view.toolbar.element );
+
+            myEditor = editor;
+        } )
+        .catch( error => {
+            console.error( error );
+        } );
+
+    DecoupledEditor
+        .create( document.querySelector( '#Titleen' ) )
+        .then( editor => {
+            myEditor2 = editor;
+        } )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+<script>
   var Adddata = new FormData();
   var AddLogoFiles = [];
   var errorFiles = [];
+
   $(".dropzone").dropzone({
     dictDefaultMessage: " <p>Resim Seçiniz ya da Bu Alana Sürükleyiniz</p>",
     url: "/SubmitProperty",
@@ -148,23 +164,22 @@
 
   $(".Save").click(function () {
     $(".PostLoader").show();
-
     // instead of making changes to the content of the Titletr and Titleen fields, HTMLEncode content and HTMLDecode on the API side
-    var Titletr = (CKEDITOR.instances.Titletr.getData());
-    var Titleen = (CKEDITOR.instances.Titleen.getData());
+    var Titletr = myEditor.getData();
+    var Titleen = myEditor2.getData();
 
     //Adddata.append("CategoryId", $('#Categoryid').val());
     Adddata.append("OrderBy", $("#orderby").val());
 
-    Adddata.append("Titletr", Titletr);
-    Adddata.append("Titleen", Titleen);
+    Adddata.append("Title_tr", Titletr);
+    Adddata.append("Title_en", Titleen);
 
-    Adddata.append("UnderTitletr", $("#undertitletr").val());
-    Adddata.append("UnderTitleen", $("#undertitleen").val());
-    Adddata.append("ButtonTitletr", $("#buttontitletr").val());
-    Adddata.append("ButtonTitleen", $("#buttontitleen").val());
-    Adddata.append("ButtonUrltr", $("#buttonlinktr").val());
-    Adddata.append("ButtonUrlen", $("#buttonlinken").val());
+    Adddata.append("UnderTitle_tr", $("#undertitletr").val());
+    Adddata.append("UnderTitle_en", $("#undertitleen").val());
+    Adddata.append("ButtonTitle_tr", $("#buttontitletr").val());
+    Adddata.append("ButtonTitle_en", $("#buttontitleen").val());
+    Adddata.append("ButtonUrl_tr", $("#buttonlinktr").val());
+    Adddata.append("ButtonUrl_en", $("#buttonlinken").val());
     Adddata.append("Type", $("#Type").val());
 
     if (AddLogoFiles.length > 0) {
@@ -191,7 +206,7 @@
           false);
         return xhr;
       },
-      url: "@Url.Action("SliderManagement"),
+      url: "AdminPageSlider/SliderManagement",
       type: "POST",
       processData: false,
       contentType: false,

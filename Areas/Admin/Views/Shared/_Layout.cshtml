@@ -8,33 +8,14 @@
   <meta name="description" content="Pr yazilim Admin">
   <title>@ViewBag.Title | Lumos </title>
   <link rel="icon" href="~/Content/Admin/images/favicon.ico" type="image/x-icon">
-  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-  <script src="https://use.fontawesome.com/667a8d8a01.js"></script>
+  <link rel="stylesheet" href="~/css/admin/nice-select.css">
 
-  @*<link href="/Content/Admin/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" />*@
+  <link rel="stylesheet" href="~/css/admin/style.css">
 
-  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-  @* <link href="~/Content/Admin/plugins/node-waves/waves.css" rel="stylesheet" /> *@
-  @* <link href="~/Content/Admin/plugins/animate-css/animate.css" rel="stylesheet" /> *@
-  <link rel="stylesheet" href="~/css/admin/style.css" asp-append-version="true" />
-  @* <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.11.4/datatables.min.css" /> *@
-  <link rel="stylesheet" href="~/css/admin/nice-select.css" asp-append-version="true" />
-  <link rel="stylesheet" href="~/css/admin/all-themes.css" asp-append-version="true" />
-  @* <link href="~/Content/Admin/plugins/sweetalert/sweetalert.css" rel="stylesheet" /> *@
-  @* <link href="~/Content/Admin/plugins/jquery-datatable/skin/bootstrap/css/datatables.min.css" rel="stylesheet" /> *@
-  @* <script src="~/Content/Admin/plugins/jquery/jquery.js"></script>
-  <script src="~/Content/Admin/plugins/jquery-datatable/jquery.dataTables.js"></script>
-  <script src="~/Content/Admin/plugins/jquery-datatable/skin/bootstrap/js/datatables.min.js"></script>
-  <script src="~/Content/Admin/plugins/ckeditor/config.js"></script> *@
-  @* <script src="~/Content/Admin/scripts/admin/js/jquery.datetimepicker.full.min.js"></script> *@
-  @* <script src="https://cdn.ckeditor.com/ckeditor5/35.4.0/classic/ckeditor.js"></script> *@
-  <link href="~/Content/Admin/css/jquery.datetimepicker.min.css" rel="stylesheet" />
+  <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+  <script src="~/lib/ckeditor/ckeditor.js" asp-append-version="true"></script>
 </head>
-
 <body>
-
   <div class="overlaypage"></div>
   <div class="overlaypage1"></div>
   <header class="w-100 flex text-center h-80 border-bottom-1 justify-between align-center bg-white px-24">
@@ -87,7 +68,7 @@
         <li class="px-16 openSabitDropDown cursor-pointer text-primary">
           Sabit İçerikler
           <div class="sabitDropDown absolute right-0 mr-856 px-16 py-16 bg-white h-auto box-shadow-primary rounded w-208 grid gap-x-2 mt-30">
-            <a class="flex justify-between" href="/admin/SliderList">Ana Slider Yönetimi</a>
+            <a class="flex justify-between" href="/admin/slider-management">Ana Slider Yönetimi</a>
             <a class="flex justify-between" href="/admin/IndexContentList">Ana Sayfa İçerik Yönetimi</a>
             <a class="flex justify-between" href="/admin/OtherFixedPageList">Diğer Sabit Sayfa</a>
             <a class="flex justify-between text-left" href="/admin/ContractsList">Politika veya Sözleşme Yönetimi</a>
@@ -129,34 +110,22 @@
   <section class="content">
     @RenderBody()
   </section>
+
   <div class="h-55 bottom-0 fixed w-100 flex justify-center justify-between-M align-center bg-white py-16 px-16">
     <a class="text-font-400 text-blue text-10 ml-auto m-none-M" href="#"><span class="text-third">©2022 - Pr Yazılım</span> Uniq CMS</a>
     <div class="ml-auto flex m-none-M">
       <a href="#" class="ml-auto text-blue text-10 text-font-500"><img class="w-12 h-12 mr-6" src="/img-content/admin/icon/footer-phone-icon.svg" alt="phone" />+90 232 700 0770</a>
     </div>
   </div>
-  <script src="~/lib/jquery/dist/jquery.min.js"></script>
   <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-  <script src="~/js/admin/jquery.nice-select.js" asp-append-version="true"></script>
-  <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  @* <script src="~/Content/Admin/plugins/sweetalert/sweetalert.min.js"></script> *@
-  @* <script src="~/Content/Admin/plugins/node-waves/waves.js"></script> *@
-  <script src="~/js/admin/script.js" asp-append-version="true"></script>
-  <script src="~/js/admin/prengine.js" asp-append-version="true"></script>
+  <script src="~/js/Admin/jquery.nice-select.js" asp-append-version="true"></script>
 
-
-
+  <script src="~/js/Admin/script.js" asp-append-version="true"></script>
+  <script>
+    var pathname = window.location.pathname;
+    $('li.active').not('.TabMenu').removeClass('active');
+    $('a[href="' + pathname + '"]').closest("li").addClass("active");
+  </script>
 </body>
 </html>
-<script>
-    ClassicEditor
-        .create( document.querySelector( '#editor' ) )
-        .catch( error => {
-            console.error( error );
-        } );
-</script>
-<script>
-  var pathname = window.location.pathname;
-  $('li.active').not('.TabMenu').removeClass('active');
-  $('a[href="' + pathname + '"]').closest("li").addClass("active");
-</script>
+
