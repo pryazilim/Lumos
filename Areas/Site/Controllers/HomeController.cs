@@ -13,6 +13,9 @@ public class HomeController : Controller
 
   public IActionResult Index()
   {
+    var mdl = new Areas.Site.Models.ViewModel.IndexModel();
+    var _langId = Convert.ToInt32(Resource.LANG_CODE);
+
     using (var db = new DataContext())
     {
       // var posts = db.BlogPosts.Where(e => e.PublishedOn.HasValue && e.PublishedOn < DateTime.Now && !e.DeletedOn.HasValue).OrderByDescending(e => e.PublishedOn).Take(10).ToList();

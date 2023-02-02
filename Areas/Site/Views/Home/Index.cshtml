@@ -1,21 +1,22 @@
-﻿@{
+﻿@model Lumos.Areas.Site.Models.ViewModel.IndexModel
+@{
   ViewData["Title"] = "Home Page";
 }
 @* slider *@
 <div class="service-slider-images">
-  <div class="index-slider relative"
-    style="background: url(/img-content/site/img/slider.jpg)no-repeat; background-size: cover; background-position: center; ">
-    <div class="absolute grid gap-24 slider-text-position px-210 px-24-m">
-      <p class="mb-0 text-white font-weight-600 font-size-48 line-height-60 font-size-30-m line-height-36-m">Tüm
-        Kazalara Karşı Hukuksal Danışmanlık</p>
-      <a class="none-m mt-24 w-fit-content" href="#">
-        <div class="bg-3D0-40 rounded-8 w-fit-content py-16 px-20">
-          <p class="mb-0 text-white font-weight-500 font-size-16 line-height-24">Hizmetlerimiz</p>
-        </div>
-      </a>
+  @foreach (var item in Model.SliderList)
+  {
+     <div class="index-slider relative" style="background: url(/UploadFile/Slider/@item.PhotoPath)no-repeat; background-size: cover; background-position: center; ">
+      <div class="absolute grid gap-24 slider-text-position px-210 px-24-m">
+        <div class="mb-0 text-white font-weight-600 font-size-48 line-height-60 font-size-30-m line-height-36-m">@Html.Raw(item.SliderLanguageList.Title)</div>
+        <a class="none-m mt-24 w-fit-content" href="@item.SliderLanguageList.ButtonUrl">
+          <div class="bg-3D0-40 rounded-8 w-fit-content py-16 px-20">
+            <p class="mb-0 text-white font-weight-500 font-size-16 line-height-24">@item.SliderLanguageList.ButtonTitle</p>
+          </div>
+        </a>
+      </div>
     </div>
-  </div>
-  <div class="index-slider"style="background: url(/img-content/site/img/slider.jpg)no-repeat; background-size: cover; background-position: center; "></div>
+  }
 </div>
 @* slider *@
 @* Intro *@
